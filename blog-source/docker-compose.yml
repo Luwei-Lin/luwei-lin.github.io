@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  blog-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: luwei-blog-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount source code for hot reload
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
+    restart: unless-stopped
+
+  blog-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: luwei-blog-prod
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    profiles:
+      - production
