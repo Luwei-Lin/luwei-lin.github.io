@@ -6,6 +6,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -16,7 +17,6 @@ const config: Config = {
         DEFAULT: {
           css: {
             maxWidth: '65ch',
-            color: '#333',
             a: {
               color: '#3182ce',
               '&:hover': {

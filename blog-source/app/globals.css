@@ -1,22 +1,12 @@
+/* Code syntax highlighting — dark theme works well in both light and dark page modes */
+@import 'highlight.js/styles/atom-one-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
+  @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100;
   font-family: Arial, Helvetica, sans-serif;
 }
 

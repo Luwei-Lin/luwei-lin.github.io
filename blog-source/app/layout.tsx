@@ -16,14 +16,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark')}})()` }} />
+      </head>
       <body className={spaceGrotesk.className}>
         <Navigation />
         <main className="min-h-screen">
           {children}
         </main>
-        <footer className="bg-gray-100 py-8 mt-16">
-          <div className="container mx-auto px-4 text-center text-gray-600">
+        <footer className="bg-gray-100 dark:bg-gray-900 py-8 mt-16">
+          <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
             <p>&copy; {new Date().getFullYear()} Luwei (Luis) Lin. All rights reserved.</p>
           </div>
         </footer>
