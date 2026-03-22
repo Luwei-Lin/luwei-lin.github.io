@@ -1,3 +1,10 @@
+---
+title: "DRY, WET, and AHA: A Tech Channel Discussion"
+date: "2026-03-15"
+excerpt: "A conversation in our tech channel got me thinking about a tension every developer eventually faces: when is abstraction actually helpful?"
+tags: ["clean-code", "programming"]
+---
+
 # DRY, WET, and AHA: A Tech Channel Discussion
 
 A conversation in our tech channel got me thinking about a tension every developer eventually faces: when is abstraction actually helpful?

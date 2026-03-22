@@ -1,3 +1,10 @@
+---
+title: "Beyond Hot-Fixes: Managing Legacy Data Integrity in Evolving Systems"
+date: "2026-02-26"
+excerpt: "How a production incident with legacy records led us from reactive hot-fixes to a proactive Anonymized Production Mirror strategy."
+tags: ["database", "engineering", "best-practices"]
+---
+
 # Beyond "Hot-Fixes": Managing Legacy Data Integrity in Evolving Systems
 
 ## Executive Summary
