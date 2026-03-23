@@ -37,6 +37,6 @@ describe('ResumeBuilderPage', () => {
 
   it('renders the PDF viewer panel', () => {
     render(<ResumeBuilderPage />);
-    expect(screen.getByTestId('pdf-viewer-mock')).toBeInTheDocument();
+    expect(screen.getAllByTestId('pdf-viewer-mock').length).toBeGreaterThan(0);
   });
 });

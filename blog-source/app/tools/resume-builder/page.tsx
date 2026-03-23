@@ -19,6 +19,8 @@ const PDFViewer = dynamic(
   }
 );
 
+const MobilePDFButton = dynamic(() => import('@/components/MobilePDFButton'), { ssr: false });
+
 export default function ResumeBuilderPage() {
   const [data, setData] = useState<ResumeData>(DEFAULT_RESUME_DATA);
 
@@ -47,22 +49,7 @@ export default function ResumeBuilderPage() {
 
       {/* Mobile: Generate button */}
       <div className="lg:hidden mt-8">
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            // On mobile, open PDF in new tab using blob URL
-            import('@react-pdf/renderer').then(({ pdf }) => {
-              pdf(<ResumePDF data={data} />).toBlob().then((blob) => {
-                const url = URL.createObjectURL(blob);
-                window.open(url, '_blank');
-              });
-            });
-          }}
-          className="block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-        >
-          Generate PDF (opens in new tab)
-        </a>
+        <MobilePDFButton data={data} />
       </div>
 
     </div>
