@@ -25,7 +25,7 @@ function renderTables(markdown: string): string {
       const headers = parseRow(headerRow);
       const rows = bodyRows.trim().split('\n').filter(Boolean);
       const thead = `<thead><tr>${headers.map((h) => `<th>${h}</th>`).join('')}</tr></thead>`;
-      const tbody = `<tbody>${rows.map((r) => `<tr>${parseRow(r).map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+      const tbody = `<tbody>${rows.map((r: string) => `<tr>${parseRow(r).map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
       return `<table>${thead}${tbody}</table>\n\n`;
     }
   );

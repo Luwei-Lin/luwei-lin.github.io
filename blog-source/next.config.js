@@ -6,6 +6,7 @@ const nextConfig = {
   },
   basePath: '',
   trailingSlash: true,
+  transpilePackages: ['@react-pdf/renderer'],
 }
 
 export default nextConfig
