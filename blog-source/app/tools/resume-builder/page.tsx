@@ -3,21 +3,17 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import ResumeForm from '@/components/ResumeForm';
-import ResumePDF from '@/components/ResumePDF';
 import { DEFAULT_RESUME_DATA } from '@/lib/resume-types';
 import type { ResumeData } from '@/lib/resume-types';
 
-const PDFViewer = dynamic(
-  () => import('@react-pdf/renderer').then((mod) => mod.PDFViewer),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex-1 flex items-center justify-center bg-gray-100 rounded text-gray-400 text-sm">
-        Loading preview...
-      </div>
-    ),
-  }
-);
+const PDFPreviewPanel = dynamic(() => import('@/components/PDFPreviewPanel'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex-1 flex items-center justify-center bg-gray-100 rounded text-gray-400 text-sm">
+      Loading preview...
+    </div>
+  ),
+});
 
 const MobilePDFButton = dynamic(() => import('@/components/MobilePDFButton'), { ssr: false });
 
@@ -40,9 +36,7 @@ export default function ResumeBuilderPage() {
 
         {/* Right: PDF Preview (desktop) */}
         <div className="hidden lg:flex lg:w-1/2 sticky top-20 self-start h-[85vh]">
-          <PDFViewer width="100%" height="100%" showToolbar>
-            <ResumePDF data={data} />
-          </PDFViewer>
+          <PDFPreviewPanel data={data} />
         </div>
 
       </div>
