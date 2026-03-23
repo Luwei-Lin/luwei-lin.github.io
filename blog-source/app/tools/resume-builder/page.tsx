@@ -1,0 +1,70 @@
+'use client';
+
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import ResumeForm from '@/components/ResumeForm';
+import ResumePDF from '@/components/ResumePDF';
+import { DEFAULT_RESUME_DATA } from '@/lib/resume-types';
+import type { ResumeData } from '@/lib/resume-types';
+
+const PDFViewer = dynamic(
+  () => import('@react-pdf/renderer').then((mod) => mod.PDFViewer),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex-1 flex items-center justify-center bg-gray-100 rounded text-gray-400 text-sm">
+        Loading preview...
+      </div>
+    ),
+  }
+);
+
+export default function ResumeBuilderPage() {
+  const [data, setData] = useState<ResumeData>(DEFAULT_RESUME_DATA);
+
+  return (
+    <div className="container mx-auto px-4 py-10">
+      <h1 className="text-3xl font-bold mb-2">Resume Builder</h1>
+      <p className="text-gray-500 mb-8 text-sm">
+        Fill in your details below. The PDF preview updates live. Pre-filled with an example — replace with your own info.
+      </p>
+
+      <div className="flex flex-col lg:flex-row gap-8">
+
+        {/* Left: Form */}
+        <div className="w-full lg:w-1/2 overflow-y-auto">
+          <ResumeForm data={data} onChange={setData} />
+        </div>
+
+        {/* Right: PDF Preview (desktop) */}
+        <div className="hidden lg:flex lg:w-1/2 sticky top-20 self-start h-[85vh]">
+          <PDFViewer width="100%" height="100%" showToolbar>
+            <ResumePDF data={data} />
+          </PDFViewer>
+        </div>
+
+      </div>
+
+      {/* Mobile: Generate button */}
+      <div className="lg:hidden mt-8">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            // On mobile, open PDF in new tab using blob URL
+            import('@react-pdf/renderer').then(({ pdf }) => {
+              pdf(<ResumePDF data={data} />).toBlob().then((blob) => {
+                const url = URL.createObjectURL(blob);
+                window.open(url, '_blank');
+              });
+            });
+          }}
+          className="block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+        >
+          Generate PDF (opens in new tab)
+        </a>
+      </div>
+
+    </div>
+  );
+}
