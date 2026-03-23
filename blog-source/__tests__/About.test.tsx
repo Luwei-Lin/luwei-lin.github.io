@@ -13,10 +13,11 @@ describe('AboutPage', () => {
     expect(screen.getByText(/Software Developer · Avanti HCM/i)).toBeInTheDocument();
   });
 
-  it('renders a download resume link', () => {
+  it('renders a view resume link', () => {
     render(<AboutPage />);
-    const link = screen.getByRole('link', { name: /Download Resume/i });
+    const link = screen.getByRole('link', { name: /View Resume/i });
     expect(link).toHaveAttribute('href', '/luwei-lin-resume-2024.pdf');
+    expect(link).toHaveAttribute('target', '_blank');
   });
 
   it('renders the Current Role card', () => {

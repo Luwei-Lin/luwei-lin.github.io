@@ -12,10 +12,11 @@ export default function AboutPage() {
         {/* Download Button */}
         <a
           href="/luwei-lin-resume-2024.pdf"
-          download
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg mb-10 transition-colors"
         >
-          Download Resume (PDF)
+          View Resume (PDF)
         </a>
 
         {/* Bio */}
