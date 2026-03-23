@@ -24,17 +24,17 @@ export default function AboutPage() {
           <p>
             Fullstack software developer with 2+ years of production experience at Avanti HCM,
             building enterprise HR software used by real organizations. Started as a co-op and
-            converted to full-time — proof of consistent delivery, not just internship checkboxes.
+            converted to full-time, proof of consistent delivery, not just internship checkboxes.
           </p>
           <p>
-            I work across the stack daily — TypeScript and React on the frontend, C# and .Net on
+            I work across the stack daily: TypeScript and React on the frontend, C# and .Net on
             the backend, PostgreSQL for data. I also hold Cisco expert-level certifications and
-            interned at Arista Networks working on routing infrastructure in C++ — which means I
+            interned at Arista Networks working on routing infrastructure in C++, which means I
             understand the network layer that most web developers treat as a black box. That depth
             makes me a better systems thinker when debugging distributed issues or designing APIs.
           </p>
           <p>
-            I use Claude Code as part of my regular workflow — drafting pull request descriptions,
+            I use Claude Code as part of my regular workflow: drafting pull request descriptions,
             clarifying tasks, generating test cases, and running agentic coding workflows. I treat
             AI as a force multiplier, not a crutch.
           </p>
