@@ -1,6 +1,6 @@
 'use client';
 
-import { Document, Page, View, Text, Link, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, View, Text, StyleSheet } from '@react-pdf/renderer';
 import type { ResumeData } from '@/lib/resume-types';
 
 const s = StyleSheet.create({
