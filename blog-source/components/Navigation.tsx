@@ -24,6 +24,7 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
+    { href: '/tools/resume-builder', label: 'Tools' },
   ];
 
   const isActive = (path: string) => {

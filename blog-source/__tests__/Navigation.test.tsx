@@ -30,4 +30,9 @@ describe('Navigation', () => {
     render(<Navigation />);
     expect(screen.getByLabelText('Toggle menu')).toBeInTheDocument();
   });
+
+  it('renders Tools nav link', () => {
+    render(<Navigation />);
+    expect(screen.getAllByRole('link', { name: 'Tools' })).toHaveLength(1);
+  });
 });
