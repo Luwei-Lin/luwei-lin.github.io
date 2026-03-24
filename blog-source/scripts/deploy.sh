@@ -3,10 +3,20 @@ set -e
 
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 OUT_DIR="$(cd "$(dirname "$0")/.." && pwd)/out"
+EXPECTED_REMOTE="github.com/Luwei-Lin/luwei-lin.github.io"
 
 # Verify the build output exists
 if [ ! -d "$OUT_DIR" ]; then
   echo "Error: $OUT_DIR not found. Run 'make deploy-build' first."
+  exit 1
+fi
+
+# Verify git remote points to the correct repo
+CURRENT_REMOTE="$(git -C "$REPO_ROOT" remote get-url origin 2>/dev/null || echo '')"
+if [[ "$CURRENT_REMOTE" != *"$EXPECTED_REMOTE"* ]]; then
+  echo "Error: git remote 'origin' is '$CURRENT_REMOTE'"
+  echo "Expected it to contain '$EXPECTED_REMOTE'"
+  echo "Fix with: git remote set-url origin https://github.com/Luwei-Lin/luwei-lin.github.io.git"
   exit 1
 fi
 
