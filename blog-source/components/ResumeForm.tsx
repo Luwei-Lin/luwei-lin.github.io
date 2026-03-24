@@ -12,14 +12,14 @@ function newId() {
 }
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
-  return <h2 className="text-lg font-bold border-b border-gray-300 pb-1 mb-3 mt-6">{children}</h2>;
+  return <h2 className="text-lg font-bold border-b border-gray-300 dark:border-gray-600 pb-1 mb-3 mt-6 dark:text-gray-100">{children}</h2>;
 }
 
 function Field({ label, value, onChange, multiline }: { label: string; value: string; onChange: (v: string) => void; multiline?: boolean }) {
-  const cls = "w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:border-blue-400";
+  const cls = "w-full border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-400 dark:focus:border-blue-500";
   return (
     <div className="mb-2">
-      <label className="block text-xs text-gray-500 mb-0.5">{label}</label>
+      <label className="block text-xs text-gray-500 dark:text-gray-400 mb-0.5">{label}</label>
       {multiline ? (
         <textarea className={cls} rows={2} value={value} onChange={(e) => onChange(e.target.value)} />
       ) : (
@@ -106,7 +106,7 @@ export default function ResumeForm({ data, onChange }: Props) {
       {/* Education */}
       <SectionHeading>Education</SectionHeading>
       {data.education.map((edu) => (
-        <div key={edu.id} className="border border-gray-200 rounded p-3 mb-2 relative">
+        <div key={edu.id} className="border border-gray-200 dark:border-gray-700 dark:bg-gray-800/40 rounded p-3 mb-2 relative">
           <button
             onClick={() => removeEducation(edu.id)}
             aria-label="Remove education"
@@ -125,7 +125,7 @@ export default function ResumeForm({ data, onChange }: Props) {
       {/* Experience */}
       <SectionHeading>Experience</SectionHeading>
       {data.experience.map((exp) => (
-        <div key={exp.id} className="border border-gray-200 rounded p-3 mb-2 relative">
+        <div key={exp.id} className="border border-gray-200 dark:border-gray-700 dark:bg-gray-800/40 rounded p-3 mb-2 relative">
           <button
             onClick={() => removeExperience(exp.id)}
             aria-label="Remove experience"
@@ -137,11 +137,11 @@ export default function ResumeForm({ data, onChange }: Props) {
           <Field label="Role / Title" value={exp.role} onChange={(v) => setExperience(exp.id, { role: v })} />
           <Field label="Dates" value={exp.dates} onChange={(v) => setExperience(exp.id, { dates: v })} />
           <Field label="Location" value={exp.location} onChange={(v) => setExperience(exp.id, { location: v })} />
-          <p className="text-xs text-gray-500 mt-2 mb-1">Bullet points</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-1">Bullet points</p>
           {exp.bullets.map((b) => (
             <div key={b.id} className="flex gap-1 mb-1">
               <input
-                className="flex-1 border border-gray-300 rounded px-2 py-1 text-sm"
+                className="flex-1 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                 value={b.text}
                 onChange={(e) => setBullet(exp.id, b.id, e.target.value)}
                 placeholder="Bullet point..."
@@ -158,7 +158,7 @@ export default function ResumeForm({ data, onChange }: Props) {
       {/* Projects */}
       <SectionHeading>Projects</SectionHeading>
       {data.projects.map((proj) => (
-        <div key={proj.id} className="border border-gray-200 rounded p-3 mb-2 relative">
+        <div key={proj.id} className="border border-gray-200 dark:border-gray-700 dark:bg-gray-800/40 rounded p-3 mb-2 relative">
           <button
             onClick={() => removeProject(proj.id)}
             aria-label="Remove project"
@@ -168,11 +168,11 @@ export default function ResumeForm({ data, onChange }: Props) {
           </button>
           <Field label="Project Name" value={proj.name} onChange={(v) => setProject(proj.id, { name: v })} />
           <Field label="Dates" value={proj.dates} onChange={(v) => setProject(proj.id, { dates: v })} />
-          <p className="text-xs text-gray-500 mt-2 mb-1">Bullet points</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 mb-1">Bullet points</p>
           {proj.bullets.map((b) => (
             <div key={b.id} className="flex gap-1 mb-1">
               <input
-                className="flex-1 border border-gray-300 rounded px-2 py-1 text-sm"
+                className="flex-1 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"
                 value={b.text}
                 onChange={(e) => setProjectBullet(proj.id, b.id, e.target.value)}
                 placeholder="Bullet point..."
@@ -195,7 +195,7 @@ export default function ResumeForm({ data, onChange }: Props) {
       {/* Certifications */}
       <SectionHeading>Certifications</SectionHeading>
       {data.certifications.map((cert) => (
-        <div key={cert.id} className="border border-gray-200 rounded p-3 mb-2 relative">
+        <div key={cert.id} className="border border-gray-200 dark:border-gray-700 dark:bg-gray-800/40 rounded p-3 mb-2 relative">
           <button
             onClick={() => removeCertification(cert.id)}
             aria-label="Remove certification"
