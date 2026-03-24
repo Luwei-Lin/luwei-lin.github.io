@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import features from '@/lib/features';
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/blog', label: 'Blog' },
     { href: '/about', label: 'About' },
-    { href: '/tools/resume-builder', label: 'Tools' },
+    ...(features.tools ? [{ href: '/tools/resume-builder', label: 'Tools' }] : []),
   ];
 
   const isActive = (path: string) => {

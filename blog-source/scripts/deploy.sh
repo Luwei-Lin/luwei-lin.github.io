@@ -1,28 +1,31 @@
 #!/bin/bash
+set -e
 
-# Build the Next.js site
-echo "Building the site..."
-npm run build
+REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+OUT_DIR="$(cd "$(dirname "$0")/.." && pwd)/out"
 
-# Check if build was successful
-if [ $? -ne 0 ]; then
-    echo "Build failed!"
-    exit 1
+# Verify the build output exists
+if [ ! -d "$OUT_DIR" ]; then
+  echo "Error: $OUT_DIR not found. Run 'make deploy-build' first."
+  exit 1
 fi
 
-# Navigate to the output directory
-cd out
+# Add .nojekyll so GitHub Pages doesn't strip _next/ assets
+touch "$OUT_DIR/.nojekyll"
 
-# Add .nojekyll file
-touch .nojekyll
+# Copy built files to repo root
+echo "Copying build output to repo root..."
+cd "$REPO_ROOT"
+# Remove old build artifacts (but not source folders)
+find . -maxdepth 1 \( -name "*.html" -o -name "*.txt" -o -name ".nojekyll" \) -delete
+rm -rf _next static
 
-# Copy the static export to the root of the repository
-echo "Copying files to repository root..."
-cd ../..
-rm -rf *.html _next static
-cp -r blog-source/out/* .
+cp -r "$OUT_DIR"/. .
 
-echo "Deployment files ready! Now commit and push to GitHub:"
-echo "  git add ."
-echo "  git commit -m 'Deploy blog update'"
-echo "  git push origin main"
+# Commit and push
+echo "Committing and pushing to GitHub..."
+git add -A
+git commit -m "Deploy: $(date '+%Y-%m-%d %H:%M')"
+git push origin main
+
+echo "Done. Site will be live at https://luwei-lin.github.io in ~1 minute."

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker-compose run:*)",
+      "Bash(wc -c /Users/luis/Documents/GitHub/luwei.github.io/blog-source/.next/server/chunks/866.js)",
+      "Bash(npm --version)",
+      "Bash(docker volume:*)",
+      "Bash(npm install:*)",
+      "Bash(node_modules/.bin/next --version)",
+      "Bash(npm run:*)",
+      "Bash(docker-compose build:*)",
+      "Bash(bash scripts/deploy.sh)",
+      "Bash(sed -i '' 's/\\\\r//' /Users/luis/Documents/GitHub/luwei.github.io/blog-source/scripts/deploy.sh)",
+      "Bash(bash /Users/luis/Documents/GitHub/luwei.github.io/blog-source/scripts/deploy.sh)"
+    ]
+  }
+}

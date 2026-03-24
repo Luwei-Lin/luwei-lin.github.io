@@ -1,0 +1,82 @@
+1:"$Sreact.fragment"
+2:I[1431,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-eea9e6ffe2f9e83e.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/36966cca54120369-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/3a82fb0313618eab.css","style"]
+0:{"P":null,"b":"kCvYZAGSume3BC09xEM03","p":"","c":["","blog","getting-started-with-nextjs",""],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","getting-started-with-nextjs","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3a82fb0313618eab.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark')}})()"}}]}],["$","body",null,{"className":"__className_dd5b2f","children":[["$","$L2",null,{}],["$","main",null,{"className":"min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"bg-gray-100 dark:bg-gray-900 py-8 mt-16","children":["$","div",null,{"className":"container mx-auto px-4 text-center text-gray-600 dark:text-gray-400","children":["$","p",null,{"children":["© ",2026," Luwei (Luis) Lin. All rights reserved."]}]}]}]]}]]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","getting-started-with-nextjs","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","953","static/chunks/app/blog/%5Bslug%5D/page-e9c505b4690333f0.js"],""]
+11:Tf39,<h1>Getting Started with Next.js 14</h1>
+<p>Next.js 14 introduces several powerful features that make building web applications easier and more efficient. Let's explore the key concepts.</p>
+<h2>What is Next.js?</h2>
+<p>Next.js is a React framework that provides:</p>
+<ul>
+<li>Server-side rendering (SSR)</li>
+<li>Static site generation (SSG)</li>
+<li>File-based routing</li>
+<li>API routes</li>
+<li>Built-in optimization</li>
+</ul>
+<h2>The App Router</h2>
+<p>The new App Router uses React Server Components by default:</p>
+<pre><code class="hljs language-tsx"><span class="hljs-comment">// app/page.tsx</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HomePage</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    &amp;#x3C;div&gt;
+      &amp;#x3C;h1&gt;Welcome to Next.js <span class="hljs-number">14</span>&amp;#x3C;/h1&gt;
+      &amp;#x3C;p&gt;This is a server component by <span class="hljs-keyword">default</span>!&amp;#x3C;/p&gt;
+    &amp;#x3C;/div&gt;
+  );
+}
+</code></pre>
+<h2>Creating Routes</h2>
+<p>Routes are created using folders and files:</p>
+<pre><code class="hljs">app/
+  <span class="hljs-function"><span class="hljs-title">page</span>.tsx          -&gt;</span> /
+  blog/
+    <span class="hljs-function"><span class="hljs-title">page</span>.tsx        -&gt;</span> /blog
+    [slug]/
+      <span class="hljs-function"><span class="hljs-title">page</span>.tsx      -&gt;</span> /blog/:slug
+</code></pre>
+<h2>Data Fetching</h2>
+<p>Server components can fetch data directly:</p>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://api.example.com/data&#x27;</span>);
+  <span class="hljs-keyword">return</span> res.json();
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Page</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> getData();
+  <span class="hljs-keyword">return</span> &amp;#x3C;div&gt;{<span class="hljs-comment">/* render data */</span>}&amp;#x3C;/div&gt;;
+}
+</code></pre>
+<h2>Client Components</h2>
+<p>Use the <code>'use client'</code> directive for interactive components:</p>
+<pre><code class="hljs language-tsx"><span class="hljs-string">&#x27;use client&#x27;</span>;
+
+<span class="hljs-keyword">import</span> { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;react&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Counter</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> [count, setCount] = useState(<span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">return</span> (
+    &amp;#x3C;button onClick={<span class="hljs-function">() =&gt;</span> setCount(count + <span class="hljs-number">1</span>)}&gt;
+      Count: {count}
+    &amp;#x3C;/button&gt;
+  );
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>Next.js 14 makes it easier than ever to build performant, modern web applications. The App Router and Server Components provide a great developer experience while maintaining excellent performance.</p>
+<p>Try it out in your next project!</p>
+5:["$","article",null,{"className":"container mx-auto px-4 py-16","children":["$","div",null,{"className":"max-w-3xl mx-auto","children":[["$","$L10",null,{"href":"/blog","className":"text-blue-600 hover:text-blue-700 mb-8 inline-block","children":"← Back to Blog"}],["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"Getting Started with Next.js 14"}],["$","div",null,{"className":"text-gray-500 dark:text-gray-400 mb-4","children":"January 20, 2024"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","nextjs",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"nextjs"}],["$","span","react",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"react"}],["$","span","tutorial",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"tutorial"}]]}]]}],["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[["$","title","0",{"children":"Getting Started with Next.js 14"}],["$","meta","1",{"name":"description","content":"A comprehensive guide to building modern web applications with Next.js 14 and the App Router."}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"

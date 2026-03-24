@@ -72,7 +72,7 @@ prod-build: ## Build production Docker image
 # Deployment
 deploy-build: ## Build static site for deployment
 	@echo "$(GREEN)Building static site...$(NC)"
-	docker-compose run --rm blog-dev npm run build
+	docker-compose run --rm -e NODE_ENV=production blog-dev npm run build
 	@echo "$(GREEN)Static site built in ./out directory$(NC)"
 
 deploy: deploy-build ## Build and prepare for GitHub Pages deployment

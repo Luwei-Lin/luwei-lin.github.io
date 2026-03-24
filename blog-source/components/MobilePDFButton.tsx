@@ -1,6 +1,5 @@
 'use client';
 
-import ResumePDF from '@/components/ResumePDF';
 import type { ResumeData } from '@/lib/resume-types';
 
 interface Props {
@@ -10,7 +9,10 @@ interface Props {
 export default function MobilePDFButton({ data }: Props) {
   const handleClick = async (e: React.MouseEvent) => {
     e.preventDefault();
-    const { pdf } = await import('@react-pdf/renderer');
+    const [{ pdf }, { default: ResumePDF }] = await Promise.all([
+      import('@react-pdf/renderer'),
+      import('@/components/ResumePDF'),
+    ]);
     const blob = await pdf(<ResumePDF data={data} />).toBlob();
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');

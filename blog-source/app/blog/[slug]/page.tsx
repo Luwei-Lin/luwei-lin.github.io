@@ -1,6 +1,5 @@
 import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
-import CodeBlock from '@/components/CodeBlock';
 
 export async function generateStaticParams() {
   const posts = getAllPostSlugs();

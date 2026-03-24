@@ -1,0 +1,216 @@
+1:"$Sreact.fragment"
+2:I[1431,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-eea9e6ffe2f9e83e.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/36966cca54120369-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/3a82fb0313618eab.css","style"]
+0:{"P":null,"b":"kCvYZAGSume3BC09xEM03","p":"","c":["","blog","manage-legacy-data-integrity",""],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","manage-legacy-data-integrity","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3a82fb0313618eab.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark')}})()"}}]}],["$","body",null,{"className":"__className_dd5b2f","children":[["$","$L2",null,{}],["$","main",null,{"className":"min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"bg-gray-100 dark:bg-gray-900 py-8 mt-16","children":["$","div",null,{"className":"container mx-auto px-4 text-center text-gray-600 dark:text-gray-400","children":["$","p",null,{"children":["© ",2026," Luwei (Luis) Lin. All rights reserved."]}]}]}]]}]]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","manage-legacy-data-integrity","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","953","static/chunks/app/blog/%5Bslug%5D/page-e9c505b4690333f0.js"],""]
+11:T5338,<h1>Beyond "Hot-Fixes": Managing Legacy Data Integrity in Evolving Systems</h1>
+<h2>Executive Summary</h2>
+<p>In the lifecycle of a growing software product, code is often rewritten — but data is permanent. At <strong>TechCorp</strong>, we recently encountered a critical production incident where a newly enforced schema constraint collided with years of untouched legacy records, taking down a core workflow for hundreds of users.</p>
+<p>This post traces the journey from a reactive "manual database deletion" instinct to a proactive <strong>Anonymized Production Mirror</strong> strategy. We break down the junior-vs-senior mindset divide, walk through the technical implementation of containerized database testing, and explain why <em>making the data happy before you deploy</em> is the hallmark of a mature engineering culture.</p>
+<p><strong>Key takeaway:</strong> The records created three years ago are just as important as the ones created today. Treat your migration strategy accordingly.</p>
+<hr>
+<h2>1. The Incident: When "Required" Means "Broken"</h2>
+<p>Every full-stack developer has been there: you are implementing a new feature that requires a specific piece of metadata to function correctly. To ensure data integrity going forward, you mark the field as <strong>Required</strong> in your C# model and apply a <code>NOT NULL</code> constraint in the PostgreSQL database.</p>
+<p>On the surface, this is textbook "Clean Code." However, once deployed to the production environment at <strong>TechCorp</strong>, a subset of our oldest records instantly became what we internally call <strong>"Zombies"</strong> — records that exist in the database but can no longer be touched by the application.</p>
+<h3>The Symptom</h3>
+<p>Users attempting to close or update records created three years ago were met with generic <code>500 Internal Server Errors</code>. The application logs revealed the culprit:</p>
+<pre><code class="hljs">null value in column <span class="hljs-string">&quot;CategorizationType&quot;</span> violates<span class="hljs-built_in"> not-null </span>constraint
+</code></pre>
+<p>Because the field was empty in legacy data, any operation that triggered a save or a validation check failed. The records were effectively frozen in a broken state — unable to be modified, archived, or moved through the workflow.</p>
+<h3>Why This Happens</h3>
+<p>The root cause is a <strong>temporal mismatch</strong>: the field didn't exist (or wasn't required) when those old records were created. New constraints enforce rules on <em>all</em> rows in the table, not just future ones. Unless the historical data is backfilled before the constraint is applied, you will always hit this failure.</p>
+<hr>
+<h2>2. The Debate: Junior vs. Senior Perspectives</h2>
+<p>A Slack thread between our team members perfectly captured two very different instincts for handling a production data crisis.</p>
+<h3>The Reactive Approach (The Junior Perspective)</h3>
+<p>The immediate instinct when seeing crashes in production is to "clear the path."</p>
+<blockquote>
+<p><strong>Junior Developer:</strong> "I've identified about 200 records from 2023 that are missing the <code>CategorizationType</code>. Since they are causing crashes and preventing users from finishing their tasks, I've drafted a script to <strong>manually delete</strong> these rows from the Production DB. This will stop the errors immediately."</p>
+</blockquote>
+<p><strong>The problems with this approach:</strong></p>
+<ol>
+<li><strong>Permanent data loss.</strong> Historical context is destroyed. Audit trails, reporting, and support investigations all depend on this data existing.</li>
+<li><strong>Cascading side effects.</strong> In a relational database, deleting a parent record can trigger cascading deletes or leave orphaned records in related tables — creating a new class of bugs.</li>
+<li><strong>Non-scalable.</strong> This is a "whack-a-mole" strategy. It stops the current bleeding but guarantees the same pain the next time a schema changes.</li>
+</ol>
+<h3>The Proactive Approach (The Senior Perspective)</h3>
+<p>The senior mindset shifts from "fixing the symptom" to "securing the system."</p>
+<blockquote>
+<p><strong>Senior Architect:</strong> "Manual deletion is a nuclear option. If the data is missing, we don't delete the record — we fix the data. More importantly, we shouldn't be discovering these null-pointer exceptions in Production at all. We need to build an <strong>Anonymized Production Mirror</strong> so we can test our migrations against the 'messiness' of real-world history <em>before</em> we deploy."</p>
+</blockquote>
+<p>This perspective acknowledges a deeper truth: the problem wasn't the migration script — it was the absence of a realistic test environment. Local developer databases are always too clean, too small, and too perfect to expose the edge cases hiding in years of production data.</p>
+<hr>
+<h2>3. Technical Deep Dive: The Pain Points in Code</h2>
+<p>To understand why the system crashed, let's look at the exact mismatch between the updated application logic and the legacy data structure.</p>
+<h3>The Problematic Model</h3>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">namespace</span> <span class="hljs-title">TechCorp.Internal.Resources</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ResourceEntity</span>
+    {
+        <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> Id { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+        [<span class="hljs-meta">Required</span>] <span class="hljs-comment">// This attribute was added RECENTLY — legacy rows have NULL here</span>
+        <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> CategorizationType { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+        <span class="hljs-keyword">public</span> Status CurrentStatus { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">FinalizeRecord</span>(<span class="hljs-params"></span>)</span>
+        {
+            <span class="hljs-comment">// Business logic now assumes this field is never null.</span>
+            <span class="hljs-comment">// On legacy data (2023), this throws a NullReferenceException</span>
+            <span class="hljs-comment">// OR the DB throws a constraint violation upon SaveChanges().</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.CategorizationType.ToLower() == <span class="hljs-string">&quot;internal&quot;</span>)
+            {
+                <span class="hljs-keyword">this</span>.CurrentStatus = Status.Archived;
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                <span class="hljs-keyword">this</span>.CurrentStatus = Status.Completed;
+            }
+        }
+    }
+}
+</code></pre>
+<h3>The Dangerous Migration</h3>
+<p>In the database, the schema migration looked like this:</p>
+<pre><code class="hljs language-sql"><span class="hljs-comment">-- DANGEROUS: This fails immediately if ANY existing rows contain NULL</span>
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> &quot;ResourceEntities&quot;
+<span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">COLUMN</span> &quot;CategorizationType&quot; <span class="hljs-keyword">SET</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>;
+</code></pre>
+<p>This migration will succeed on a clean developer database (zero rows, or freshly seeded data) but <strong>fail catastrophically on production</strong> if even one legacy row has a <code>NULL</code> value. The <code>ALTER COLUMN</code> statement cannot be partially applied — it either succeeds for all rows or rolls back entirely.</p>
+<hr>
+<h2>4. The Solution: The "Anonymized Testing" Workflow</h2>
+<p>The Senior Architect's solution introduces four distinct steps designed to make legacy data a first-class citizen in the development pipeline.</p>
+<h3>Step 1: The Anonymization Layer</h3>
+<p>You cannot pull raw production data to a local machine due to privacy regulations (GDPR, SOC 2, HIPAA). A scrubbing script masks all Personally Identifiable Information (PII) and sensitive client identifiers while <strong>deliberately preserving</strong> the null values and structural "messiness" that make the data realistic.</p>
+<pre><code class="hljs language-sql"><span class="hljs-comment">-- mask_data.sql</span>
+UPDATE &quot;ResourceEntities&quot;
+<span class="hljs-keyword">SET</span>
+    &quot;OwnerEmail&quot;    <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;scrubbed_&#x27;</span> <span class="hljs-operator">||</span> &quot;Id&quot; <span class="hljs-operator">||</span> <span class="hljs-string">&#x27;@techcorp.internal&#x27;</span>,
+    &quot;InternalNotes&quot; <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Masked for development use&#x27;</span>,
+    &quot;Metadata&quot;      <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;{}&#x27;</span>;
+
+<span class="hljs-comment">-- CRITICAL: We DO NOT fix CategorizationType here.</span>
+<span class="hljs-comment">-- The NULLs must remain so our tests reflect real production conditions.</span>
+</code></pre>
+<p>The goal is not a <em>clean</em> dataset — it is a <em>safe</em> dataset. A sanitized copy that still contains all the structural quirks of real-world history.</p>
+<h3>Step 2: The Containerized Sandbox</h3>
+<p>We provide every developer with a <code>docker-compose</code> configuration that spins up a local PostgreSQL instance pre-loaded with the anonymized data dump. Any developer can reproduce the exact production-like environment in seconds.</p>
+<pre><code class="hljs language-yaml"><span class="hljs-comment"># docker-compose.yml</span>
+<span class="hljs-attr">version:</span> <span class="hljs-string">&#x27;3.8&#x27;</span>
+
+<span class="hljs-attr">services:</span>
+  <span class="hljs-attr">techcorp-db-test:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">postgres:15-alpine</span>
+    <span class="hljs-attr">container_name:</span> <span class="hljs-string">techcorp_mini_prod</span>
+    <span class="hljs-attr">environment:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_USER=dev_admin</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_PASSWORD=dev_password</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">POSTGRES_DB=techcorp_metadata_db</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">&quot;5432:5432&quot;</span>
+    <span class="hljs-attr">volumes:</span>
+      <span class="hljs-comment"># Mounts our anonymized production snapshot as the seed data</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">./test-data/anonymized_init.sql:/docker-entrypoint-initdb.d/01_init.sql</span>
+    <span class="hljs-attr">healthcheck:</span>
+      <span class="hljs-attr">test:</span> [<span class="hljs-string">&quot;CMD-SHELL&quot;</span>, <span class="hljs-string">&quot;pg_isready -U dev_admin -d techcorp_metadata_db&quot;</span>]
+      <span class="hljs-attr">interval:</span> <span class="hljs-string">5s</span>
+      <span class="hljs-attr">timeout:</span> <span class="hljs-string">5s</span>
+      <span class="hljs-attr">retries:</span> <span class="hljs-number">5</span>
+</code></pre>
+<p>Running <code>docker-compose up</code> gives every developer a high-fidelity test environment that mirrors the state of production — including all legacy null values — without exposing any real user data.</p>
+<h3>Step 3: The "Two-Step" Backfill-and-Enforce Migration</h3>
+<p>Instead of a single destructive <code>ALTER COLUMN</code>, we use a <strong>Backfill-and-Enforce</strong> pattern. The migration is split into two atomic operations: patch the data first, then enforce the constraint.</p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">SafeAddCategorizationConstraint</span> : <span class="hljs-title">Migration</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Up</span>(<span class="hljs-params">MigrationBuilder migrationBuilder</span>)</span>
+    {
+        <span class="hljs-comment">// STEP 1 — DATA PATCH: Assign a safe default to all legacy NULLs.</span>
+        <span class="hljs-comment">// This must run before the schema change, or the constraint will fail.</span>
+        migrationBuilder.Sql(
+            <span class="hljs-string">&quot;UPDATE \&quot;ResourceEntities\&quot; &quot;</span> +
+            <span class="hljs-string">&quot;SET \&quot;CategorizationType\&quot; = &#x27;Legacy_Unknown&#x27; &quot;</span> +
+            <span class="hljs-string">&quot;WHERE \&quot;CategorizationType\&quot; IS NULL;&quot;</span>
+        );
+
+        <span class="hljs-comment">// STEP 2 — SCHEMA CHANGE: Now safe to enforce, because no NULLs remain.</span>
+        migrationBuilder.AlterColumn&amp;<span class="hljs-meta">#x3C;string&gt;(</span>
+            name: <span class="hljs-string">&quot;CategorizationType&quot;</span>,
+            table: <span class="hljs-string">&quot;ResourceEntities&quot;</span>,
+            type: <span class="hljs-string">&quot;text&quot;</span>,
+            nullable: <span class="hljs-literal">false</span>,
+            oldClrType: <span class="hljs-keyword">typeof</span>(<span class="hljs-built_in">string</span>),
+            oldType: <span class="hljs-string">&quot;text&quot;</span>,
+            oldNullable: <span class="hljs-literal">true</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Down</span>(<span class="hljs-params">MigrationBuilder migrationBuilder</span>)</span>
+    {
+        migrationBuilder.AlterColumn&amp;<span class="hljs-meta">#x3C;string&gt;(</span>
+            name: <span class="hljs-string">&quot;CategorizationType&quot;</span>,
+            table: <span class="hljs-string">&quot;ResourceEntities&quot;</span>,
+            type: <span class="hljs-string">&quot;text&quot;</span>,
+            nullable: <span class="hljs-literal">true</span>);
+    }
+}
+</code></pre>
+<p>The sentinel value <code>'Legacy_Unknown'</code> is intentional. It is a first-class, queryable category that signals to future developers: <em>this record pre-dates the field and was never explicitly categorized.</em> It preserves historical intent without losing the record.</p>
+<h3>Step 4: Validate Before You Merge</h3>
+<p>Before any migration is approved for deployment, it must pass against the anonymized mirror. This check is integrated into the CI/CD pipeline as a required gate:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># In CI pipeline (e.g., GitHub Actions):</span>
+docker-compose -f docker-compose.test.yml up -d
+dotnet ef database update --connection <span class="hljs-string">&quot;<span class="hljs-variable">$ANON_MIRROR_CONNECTION_STRING</span>&quot;</span>
+<span class="hljs-comment"># If the migration fails here, the PR cannot be merged.</span>
+</code></pre>
+<p>If the migration fails against the production-like dataset in CI, it fails safely — before anyone notices.</p>
+<hr>
+<h2>5. Trade-offs and Comparison</h2>
+<table><thead><tr><th>Strategy</th><th>Speed to Fix</th><th>Risk Level</th><th>Long-Term Impact</th></tr></thead><tbody><tr><td><strong>Manual Deletion</strong></td><td>Minutes</td><td>Critical — permanent data loss, broken foreign keys</td><td>Technical debt accumulates; audit history is corrupted</td></tr><tr><td><strong>Simple ALTER Migration</strong></td><td>Hours</td><td>Medium — may fail on deployment if edge cases exist</td><td>System stabilizes, but deployment is a "coin flip"</td></tr><tr><td><strong>Anonymized Mirror + Backfill</strong></td><td>Days (one-time setup)</td><td>Negligible</td><td>High reliability; catches ~99% of legacy data bugs before they reach production</td></tr></tbody></table>
+<p>The upfront cost of the Anonymized Mirror strategy is real, but it is a one-time investment. Once the pipeline is established, every future migration runs against it automatically with zero additional developer effort.</p>
+<hr>
+<h2>6. Industry Insights: How Leading Teams Handle This</h2>
+<p>This challenge is a well-documented problem in <strong>Database Reliability Engineering (DRE)</strong>. Large-scale engineering organizations have converged on several proven patterns:</p>
+<h3>The "Expand and Contract" Pattern</h3>
+<p>Described by Martin Fowler as <a href="https://martinfowler.com/bliki/ParallelChange.html">Parallel Change</a>, this three-phase approach adds a new field, dual-writes to both old and new fields simultaneously, migrates data in the background, and finally removes the old field. No single deployment is ever backward-incompatible.</p>
+<h3>Evolutionary Database Design</h3>
+<p>Fowler and Pramod Sadalage's foundational article <a href="https://martinfowler.com/articles/evodb.html">Evolutionary Database Design</a> establishes the principle that database schemas should evolve incrementally through small, version-controlled migrations — the same agility we apply to application code.</p>
+<h3>Idempotent Migrations at GitLab</h3>
+<p>GitLab's <a href="https://docs.gitlab.com/development/migration_style_guide/">Migration Style Guide</a> mandates that every migration must be safe to run multiple times without causing failures. Their <a href="https://docs.gitlab.com/development/database/avoiding_downtime_in_migrations/">zero-downtime migration documentation</a> is a detailed playbook for safe column changes, backfills, and constraint additions at scale.</p>
+<h3>Online Migrations at Stripe</h3>
+<p>Stripe's engineering post <a href="https://stripe.com/blog/online-migrations">Online Migrations at Scale</a> is one of the most cited real-world accounts of the backfill pattern. They describe a four-step process: dual-write, backfill historical data, verify consistency, then cut over — all with zero downtime and zero data loss.</p>
+<h3>Data Hydration Pipelines</h3>
+<p>Rather than relying on developers to manually refresh their test data, mature engineering organizations run automated <strong>Hydration Services</strong> that take production snapshots, anonymize them, and push them to staging environments on a daily schedule. Developers never code against empty or artificially perfect data.</p>
+<hr>
+<h2>7. Conclusion: Data is Forever</h2>
+<p>At TechCorp, this incident became a turning point. We realized that while our application stack was modern — React, .NET, TypeScript — our approach to <em>data</em> was still in the "early-stage startup" phase: manual interventions, production fear, and surprises on deploy day.</p>
+<p>By adopting the Anonymized Production Mirror strategy, we shifted from a culture of hoping migrations work to a culture of <em>proving</em> they work. Legacy data is no longer something we work around — it is a first-class test fixture that lives in every developer's local environment.</p>
+<p>The system may change. The data never goes away. Build your pipeline with that in mind.</p>
+<blockquote>
+<p><strong>The Golden Rule:</strong> Don't hope your schema change is compatible with five years of production history. Build a mirror, run your migrations, and make the data happy.</p>
+</blockquote>
+<hr>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="https://martinfowler.com/bliki/ParallelChange.html">Parallel Change (Expand and Contract)</a> — Martin Fowler, martinfowler.com</li>
+<li><a href="https://martinfowler.com/articles/evodb.html">Evolutionary Database Design</a> — Martin Fowler &#x26; Pramod Sadalage, martinfowler.com</li>
+<li><a href="https://martinfowler.com/books/refactoringDatabases.html">Refactoring Databases: Evolutionary Database Design</a> — Scott W. Ambler &#x26; Pramod Sadalage (book)</li>
+<li><a href="https://www.oreilly.com/library/view/database-reliability-engineering/9781491925935/">Database Reliability Engineering</a> — Laine Campbell &#x26; Charity Majors, O'Reilly</li>
+<li><a href="https://stripe.com/blog/online-migrations">Online Migrations at Scale</a> — Stripe Engineering Blog</li>
+<li><a href="https://docs.gitlab.com/development/database/avoiding_downtime_in_migrations/">Avoiding Downtime in Migrations</a> — GitLab Engineering Docs</li>
+<li><a href="https://docs.gitlab.com/development/migration_style_guide/">Migration Style Guide</a> — GitLab Engineering Docs</li>
+<li><a href="https://postgresql-anonymizer.readthedocs.io/">PostgreSQL Anonymizer (anon extension)</a> — Official Documentation</li>
+</ul>
+5:["$","article",null,{"className":"container mx-auto px-4 py-16","children":["$","div",null,{"className":"max-w-3xl mx-auto","children":[["$","$L10",null,{"href":"/blog","className":"text-blue-600 hover:text-blue-700 mb-8 inline-block","children":"← Back to Blog"}],["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"Beyond Hot-Fixes: Managing Legacy Data Integrity in Evolving Systems"}],["$","div",null,{"className":"text-gray-500 dark:text-gray-400 mb-4","children":"February 26, 2026"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","database",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"database"}],["$","span","engineering",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"engineering"}],["$","span","best-practices",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"best-practices"}]]}]]}],["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[["$","title","0",{"children":"Beyond Hot-Fixes: Managing Legacy Data Integrity in Evolving Systems"}],["$","meta","1",{"name":"description","content":"How a production incident with legacy records led us from reactive hot-fixes to a proactive Anonymized Production Mirror strategy."}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"
