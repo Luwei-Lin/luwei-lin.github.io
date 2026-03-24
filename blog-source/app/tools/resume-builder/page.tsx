@@ -5,11 +5,12 @@ import dynamic from 'next/dynamic';
 import ResumeForm from '@/components/ResumeForm';
 import { DEFAULT_RESUME_DATA } from '@/lib/resume-types';
 import type { ResumeData } from '@/lib/resume-types';
+import features from '@/lib/features';
 
 const PDFPreviewPanel = dynamic(() => import('@/components/PDFPreviewPanel'), {
   ssr: false,
   loading: () => (
-    <div className="flex-1 flex items-center justify-center bg-gray-100 rounded text-gray-400 text-sm">
+    <div className="flex-1 flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded text-gray-400 dark:text-gray-500 text-sm">
       Loading preview...
     </div>
   ),
@@ -19,6 +20,15 @@ const MobilePDFButton = dynamic(() => import('@/components/MobilePDFButton'), { 
 
 export default function ResumeBuilderPage() {
   const [data, setData] = useState<ResumeData>(DEFAULT_RESUME_DATA);
+
+  if (!features.tools) {
+    return (
+      <div className="container mx-auto px-4 py-20 text-center text-gray-500">
+        <h1 className="text-3xl font-bold mb-4">Coming Soon</h1>
+        <p>This feature is not available yet.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-10">

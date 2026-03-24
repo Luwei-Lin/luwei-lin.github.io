@@ -11,7 +11,7 @@ export default function AboutPage() {
 
         {/* Download Button */}
         <a
-          href="/luwei-lin-resume-2024.pdf"
+          href="/Luwei-Lin-Resume-2026.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg mb-10 transition-colors"
