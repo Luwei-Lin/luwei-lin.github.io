@@ -1,3 +1,10 @@
+---
+title: "Canonical Test Patterns and AI Agent Scoping in a Monorepo"
+date: "2026-03-30"
+excerpt: "A PR that quietly addressed two things at once: tightening component testing conventions, and telling AI coding agents how to behave in different parts of the repo."
+tags: ["testing", "ai-agents", "monorepo"]
+---
+
 # Canonical Test Patterns and AI Agent Scoping in a Monorepo
 
 A senior frontend engineer on our team recently merged a PR that quietly addressed two things at once: tightening component testing conventions, and telling AI coding agents how to behave in different parts of the repo. I found it worth writing up because the combination is more intentional than it might look.
