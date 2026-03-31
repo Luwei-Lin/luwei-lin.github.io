@@ -1,0 +1,164 @@
+1:"$Sreact.fragment"
+2:I[1431,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-eea9e6ffe2f9e83e.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/36966cca54120369-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/3a82fb0313618eab.css","style"]
+0:{"P":null,"b":"q-_DtUUvsvH0pIEccZkOZ","p":"","c":["","blog","canonical-test-pattern-and-AI-agent",""],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","canonical-test-pattern-and-AI-agent","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3a82fb0313618eab.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark')}})()"}}]}],["$","body",null,{"className":"__className_dd5b2f","children":[["$","$L2",null,{}],["$","main",null,{"className":"min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"bg-gray-100 dark:bg-gray-900 py-8 mt-16","children":["$","div",null,{"className":"container mx-auto px-4 text-center text-gray-600 dark:text-gray-400","children":["$","p",null,{"children":["© ",2026," Luwei (Luis) Lin. All rights reserved."]}]}]}]]}]]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","canonical-test-pattern-and-AI-agent","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","953","static/chunks/app/blog/%5Bslug%5D/page-e9c505b4690333f0.js"],""]
+11:T3246,<h1>Canonical Test Patterns and AI Agent Scoping in a Monorepo</h1>
+<p>A senior frontend engineer on our team recently merged a PR that quietly addressed two things at once: tightening component testing conventions, and telling AI coding agents how to behave in different parts of the repo. I found it worth writing up because the combination is more intentional than it might look.</p>
+<hr>
+<h2>Part 1: AGENTS.md — Scoping AI Instructions Per Directory</h2>
+<p>The PR added <code>AGENTS.md</code> files at three levels of the repository. These are instruction files read by AI coding agents (like Claude Code, Cursor, or Copilot) to constrain what context they use when working in a given directory.</p>
+<h3>The hierarchy</h3>
+<pre><code class="hljs">/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AGENTS</span>.</span></span>md                              ← repo-level router
+app/react-app/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AGENTS</span>.</span></span>md                 ← frontend app scope
+app/react-app/playwright-tests/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AGENTS</span>.</span></span>md  ← e2e test scope (separate)
+app/node-server/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">AGENTS</span>.</span></span>md               ← BFF layer scope
+</code></pre>
+<p>The root <code>AGENTS.md</code> acts as a map — it names the major areas of the monorepo and routes the agent to the right sub-file. It explicitly says: <em>do not use docs or conventions from other repo areas unless the user explicitly requests cross-codebase work.</em></p>
+<p>Each sub-file then has a tight scope declaration:</p>
+<pre><code class="hljs language-markdown"><span class="hljs-section"># React App Agent Instructions</span>
+
+Scope: These instructions apply to all work under <span class="hljs-code">`app/react-app/`</span>,
+except <span class="hljs-code">`app/react-app/playwright-tests/`</span>.
+
+Always use this documentation entrypoint first:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`app/react-app/docs/README.md`</span>
+
+Then follow only the relevant linked docs for the task at hand.
+Do not pull conventions from other repo areas unless explicitly requested.
+</code></pre>
+<h3>Why this matters</h3>
+<p>In a monorepo, different directories can have very different conventions — a React app, a Node BFF, a Playwright test suite, and infra code often can't share patterns. Without scoping, an AI agent working in <code>app/react-app/</code> might pull in conventions from <code>api/</code> or <code>infra/</code> that don't apply. The AGENTS.md files solve this by giving each area its own bounded context.</p>
+<p>The pattern is also layered: the root AGENTS.md gives the agent a light repo map so it knows the overall structure, while sub-files give it task-specific guidance without overwhelming it with the entire codebase's docs.</p>
+<h3>BFF-specific guidance</h3>
+<p>The node server AGENTS.md adds domain-specific rules alongside the scoping:</p>
+<ul>
+<li>Keep BFF routes thin: validate and shape inputs at the edge, delegate behavior to services</li>
+<li>Prefer explicit typed contracts for request/response shapes over ad hoc object handling</li>
+<li>Keep error handling predictable and user-safe — no leaking internal stack details to the client</li>
+</ul>
+<p>This is the right level of specificity for an AGENTS.md: not implementation details, but architectural principles that an agent should apply consistently across the area.</p>
+<hr>
+<h2>Part 2: Canonical MockBff + AAA Pattern</h2>
+<p>The PR also established a canonical pattern for component integration tests. The core idea is to mock at the <strong>network edge</strong> (the axios instance) rather than mocking service hooks.</p>
+<h3>The pattern</h3>
+<pre><code class="hljs language-tsx"><span class="hljs-keyword">import</span> { bffAxios } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@your-org/config/api-config/axios-config&quot;</span>;
+<span class="hljs-keyword">import</span> { mock } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;jest-mock-extended&quot;</span>;
+<span class="hljs-keyword">import</span> {
+  MockBff,
+  unresolvedPromise,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@your-org/tooling/testing/test-utils/mocks/api-mocks/mock-bff-axios&quot;</span>;
+<span class="hljs-keyword">import</span> { renderFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@your-org/tooling/testing/test-utils/render-factories/render-factory&quot;</span>;
+<span class="hljs-keyword">import</span> { screen } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@testing-library/react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { AxiosInstance } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;
+
+jest.mock(<span class="hljs-string">&quot;@your-org/config/api-config/axios-config&quot;</span>, <span class="hljs-function">() =&gt;</span> ({
+  <span class="hljs-attr">bffAxios</span>: mock&amp;#x3C;AxiosInstance&gt;(),
+}));
+
+<span class="hljs-keyword">const</span> render = renderFactory.generate([<span class="hljs-string">&quot;router&quot;</span>, <span class="hljs-string">&quot;query&quot;</span>, <span class="hljs-string">&quot;antd&quot;</span>, <span class="hljs-string">&quot;i18n&quot;</span>], {
+  <span class="hljs-attr">language</span>: <span class="hljs-string">&quot;en-CA&quot;</span>,
+  <span class="hljs-attr">translations</span>: {
+    <span class="hljs-string">&quot;common.global_edit&quot;</span>: <span class="hljs-string">&quot;Edit&quot;</span>,
+  },
+});
+
+<span class="hljs-keyword">const</span> mockBff = <span class="hljs-keyword">new</span> MockBff(bffAxios);
+
+mockBff.default({
+  <span class="hljs-string">&quot;/employees/10001&quot;</span>: {
+    <span class="hljs-attr">get</span>: <span class="hljs-function">() =&gt;</span> ({
+      <span class="hljs-attr">data</span>: {
+        <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;John&quot;</span>,
+        <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Doe&quot;</span>,
+      },
+    }),
+  },
+});
+
+beforeEach(<span class="hljs-function">() =&gt;</span> {
+  jest.clearAllMocks();
+  mockBff.resetMock();
+});
+
+test(<span class="hljs-string">&quot;shows employee data&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  mockBff.testOverride({
+    <span class="hljs-string">&quot;/company/personal-codes&quot;</span>: {
+      <span class="hljs-attr">get</span>: <span class="hljs-function">() =&gt;</span> ({
+        <span class="hljs-attr">genders</span>: [],
+        <span class="hljs-attr">maritalStatuses</span>: [],
+        <span class="hljs-attr">pronouns</span>: [],
+      }),
+    },
+  });
+
+  render(&amp;#x3C;EmployeeProfile employeeId=<span class="hljs-string">&quot;10001&quot;</span> /&gt;);
+
+  expect(<span class="hljs-keyword">await</span> screen.findByText(<span class="hljs-string">&quot;John Doe&quot;</span>)).toBeInTheDocument();
+});
+
+test(<span class="hljs-string">&quot;shows personal-codes loading state&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  mockBff.testOverride({
+    <span class="hljs-string">&quot;/company/personal-codes&quot;</span>: {
+      <span class="hljs-attr">get</span>: <span class="hljs-function">() =&gt;</span> unresolvedPromise,
+    },
+  });
+
+  render(&amp;#x3C;EmployeeProfile employeeId=<span class="hljs-string">&quot;10001&quot;</span> /&gt;);
+
+  expect(<span class="hljs-keyword">await</span> screen.findByTestId(<span class="hljs-string">&quot;personal-codes-skeleton&quot;</span>)).toBeInTheDocument();
+});
+</code></pre>
+<h3>Key design decisions</h3>
+<p><strong><code>mockBff.default(...)</code> vs <code>mockBff.testOverride(...)</code></strong></p>
+<p>This is the central distinction. <code>default</code> is for responses that must exist in every test — baseline data the component always needs. <code>testOverride</code> is for the scenario being tested in that specific case.</p>
+<p>The rule: only put something in <code>default</code> if removing it would break every single test in the file. Otherwise it belongs in <code>testOverride</code> inside the test that owns that scenario.</p>
+<p><strong>URL-based routing makes ownership explicit</strong></p>
+<p>Because responses are keyed by URL (<code>"/company/personal-codes"</code>), it's immediately clear which test is responsible for which endpoint behavior. There's no ambiguity about where a response comes from.</p>
+<p><strong><code>unresolvedPromise</code> for loading states</strong></p>
+<p>Rather than building elaborate timing logic, a promise that never resolves holds the component in its loading state for as long as the test needs it. Simple and reliable.</p>
+<p><strong>AAA by spacing only</strong></p>
+<p>The test body uses the Arrange → Act → Assert structure, enforced by blank lines — not by comments. The convention is exactly one blank line between the three blocks, no extra lines inside a block, and no <code>// Arrange</code>, <code>// Act</code>, or <code>// Assert</code> labels.</p>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// The structure is visible from spacing alone:</span>
+
+test(<span class="hljs-string">&quot;shows employee data&quot;</span>, <span class="hljs-keyword">async</span> () =&gt; {
+  mockBff.testOverride({ ... });          <span class="hljs-comment">// ← Arrange</span>
+
+  render(&amp;#x3C;EmployeeProfile ... /&gt;);        <span class="hljs-comment">// ← Act</span>
+
+  expect(<span class="hljs-keyword">await</span> screen.findByText(...))    <span class="hljs-comment">// ← Assert</span>
+    .toBeInTheDocument();
+});
+</code></pre>
+<hr>
+<h2>Part 3: Explicitly Banned Anti-Patterns</h2>
+<p>The PR codified what not to do. These are review-enforced:</p>
+<table><thead><tr><th>Anti-pattern</th><th>Why it's banned</th></tr></thead><tbody><tr><td>Mocking service hooks when backend mocking can represent the same scenario</td><td>Bypasses the network edge; hides what the component actually depends on</td></tr><tr><td>Helper routing abstractions in mocks</td><td>Hides endpoint ownership — you can't tell which test controls which response</td></tr><tr><td><code>throw new Error(...)</code> fallback in mock callbacks</td><td>Not appropriate in integration-style mocks; return a benign fallback shape instead</td></tr><tr><td><code>expect(url)...</code> assertions inside mock callbacks</td><td>Tests request shape, not component behavior — use a dedicated test if that's what you're verifying</td></tr><tr><td><code>// Arrange</code>, <code>// Act</code>, <code>// Assert</code> comments</td><td>AAA is conveyed by spacing; comments add noise without adding information</td></tr><tr><td>Nested <code>describe</code> blocks</td><td>Tests should be flat and self-contained</td></tr><tr><td>Eager tests (multiple behaviors in one test)</td><td>Fails for multiple reasons; harder to debug and brittle during refactors</td></tr></tbody></table>
+<hr>
+<h2>The Connection Between Parts 1 and 2</h2>
+<p>The AGENTS.md files and the testing conventions aren't separate concerns — they reinforce each other.</p>
+<p>The testing docs in <code>app/react-app/docs/testing/</code> are the same docs the AGENTS.md points agents to. When an agent writes a test in the react-app area, it will read the conventions doc, see the canonical MockBff pattern, see the explicit anti-pattern list, and produce tests that match.</p>
+<p>This is what it looks like when a team writes docs for both humans and AI agents simultaneously. The docs were presumably always there for human review, but the AGENTS.md files make them the authoritative source for automated work too.</p>
+<hr>
+<h2>Takeaways</h2>
+<ul>
+<li>AGENTS.md files are a low-overhead way to scope AI agent behavior in a monorepo. A 15-20 line file per area prevents agents from importing the wrong conventions.</li>
+<li>The root AGENTS.md as a "repo map + router" is a useful pattern — it gives the agent orientation without loading everything upfront.</li>
+<li>Mocking at the network edge (axios) instead of service hooks keeps endpoint ownership visible and makes loading/error scenarios easy to express.</li>
+<li>The <code>default</code> / <code>testOverride</code> split is a clean solution to the "shared setup vs. test-specific setup" problem that most teams solve badly with <code>beforeEach</code> blocks.</li>
+<li>Explicit anti-pattern lists in docs work — especially when they're review-enforced and linked from the canonical pattern they replace.</li>
+</ul>
+5:["$","article",null,{"className":"container mx-auto px-4 py-16","children":["$","div",null,{"className":"max-w-3xl mx-auto","children":[["$","$L10",null,{"href":"/blog","className":"text-blue-600 hover:text-blue-700 mb-8 inline-block","children":"← Back to Blog"}],["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"$undefined"}],["$","div",null,{"className":"text-gray-500 dark:text-gray-400 mb-4","children":"Invalid Date"}],false]}],["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[],"error":null,"digest":"$undefined"}
+e:"$9:metadata"

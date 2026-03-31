@@ -1,0 +1,238 @@
+1:"$Sreact.fragment"
+2:I[1431,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-eea9e6ffe2f9e83e.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/36966cca54120369-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/3a82fb0313618eab.css","style"]
+0:{"P":null,"b":"q-_DtUUvsvH0pIEccZkOZ","p":"","c":["","blog","schema-of-api-from-backend-to-frontend",""],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","schema-of-api-from-backend-to-frontend","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/3a82fb0313618eab.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark')}})()"}}]}],["$","body",null,{"className":"__className_dd5b2f","children":[["$","$L2",null,{}],["$","main",null,{"className":"min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"bg-gray-100 dark:bg-gray-900 py-8 mt-16","children":["$","div",null,{"className":"container mx-auto px-4 text-center text-gray-600 dark:text-gray-400","children":["$","p",null,{"children":["© ",2026," Luwei (Luis) Lin. All rights reserved."]}]}]}]]}]]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","schema-of-api-from-backend-to-frontend","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","953","static/chunks/app/blog/%5Bslug%5D/page-e9c505b4690333f0.js"],""]
+11:T3aea,<p>If you've worked across backend and frontend, you've probably run into this:</p>
+<blockquote>
+<p>Backend renames a field. Frontend doesn't update. Everything compiles... until it silently breaks at runtime.</p>
+</blockquote>
+<p>This post walks through how to fix that <strong>systematically</strong> — not just patch it case by case.</p>
+<hr>
+<h2>The Core Problem: Contract Drift</h2>
+<p>When backend and frontend are developed separately, it's easy for the data contract to drift:</p>
+<ul>
+<li>Backend renames <code>personalNumber</code> → <code>personalPhone</code></li>
+<li>Frontend still uses <code>personalNumber</code></li>
+<li>No compile error, no immediate warning</li>
+<li>Users see broken UI or empty fields</li>
+</ul>
+<p>The deeper issue: <strong>frontend was manually maintaining its own type definitions</strong> instead of deriving them from the actual backend contract.</p>
+<hr>
+<h2>The Solution: Schema-Driven Workflow</h2>
+<p>The idea is simple:</p>
+<p><strong>Backend → OpenAPI Schema → Generated Types → Frontend</strong></p>
+<p>Instead of writing TypeScript interfaces by hand and hoping they match, you:</p>
+<ol>
+<li>Let the backend <strong>generate</strong> an OpenAPI schema</li>
+<li>Use tooling to <strong>generate TypeScript types</strong> from that schema</li>
+<li>Frontend <strong>imports</strong> those generated types</li>
+</ol>
+<p>Now when backend changes, the schema changes, the types change, and TypeScript <strong>tells you</strong> what broke — at compile time, not at runtime.</p>
+<hr>
+<h2>Why OpenAPI Schema Is More Than Just Documentation</h2>
+<p>A lot of developers treat Swagger/OpenAPI as just a documentation page at <code>/swagger</code>. That mental model undersells it.</p>
+<p>Think of the OpenAPI schema as a <strong>formal contract</strong> between backend and frontend:</p>
+<ul>
+<li>It defines every endpoint, request shape, and response shape</li>
+<li>It's machine-readable</li>
+<li>It can be used to generate code</li>
+<li>It can be validated automatically in CI</li>
+</ul>
+<p>Once you treat it as a contract, you can build tooling around it.</p>
+<hr>
+<h2>The Workflow, Step by Step</h2>
+<h3>1. Backend publishes an OpenAPI schema</h3>
+<p>With ASP.NET Core (C#), enabling Swagger is straightforward. The same API that serves your business data also exposes:</p>
+<ul>
+<li>Swagger UI: <code>/swagger</code></li>
+<li>Schema JSON: <code>/swagger/v1/swagger.json</code></li>
+</ul>
+<p>No separate service needed. Your existing API container can serve both.</p>
+<h3>2. Commit the schema snapshot</h3>
+<p>Check the generated <code>openapi.json</code> into your repository. This snapshot serves as:</p>
+<ul>
+<li>The input for frontend type generation</li>
+<li>A reviewable diff when the contract changes</li>
+<li>The baseline for automated schema sync checks</li>
+</ul>
+<h3>3. Generate TypeScript types from the schema</h3>
+<p>A common tool for this is <a href="https://github.com/openapi-ts/openapi-typescript"><code>openapi-typescript</code></a>:</p>
+<pre><code class="hljs language-bash">npm install --save-dev openapi-typescript
+
+<span class="hljs-comment"># From a running backend</span>
+npx openapi-typescript http://localhost:5000/swagger/v1/swagger.json -o src/api/generated/schema.ts
+
+<span class="hljs-comment"># Or from a committed schema file</span>
+npx openapi-typescript ./openapi.json -o src/api/generated/schema.ts
+</code></pre>
+<h3>4. Use generated types in frontend code</h3>
+<pre><code class="hljs language-ts"><span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./api/generated/schema&quot;</span>;
+
+<span class="hljs-keyword">type</span> ContactInfo =
+  paths[<span class="hljs-string">&quot;/employees/{employeeId}/contact&quot;</span>][<span class="hljs-string">&quot;get&quot;</span>][<span class="hljs-string">&quot;responses&quot;</span>][<span class="hljs-number">200</span>][<span class="hljs-string">&quot;content&quot;</span>][<span class="hljs-string">&quot;application/json&quot;</span>];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchContactInfo</span>(<span class="hljs-params">employeeId: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">Promise</span>&amp;#<span class="hljs-title">x3C</span></span>;ContactInfo&gt; {
+  <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.get&amp;#x3C;ContactInfo&gt;(<span class="hljs-string">`/employees/<span class="hljs-subst">${employeeId}</span>/contact`</span>);
+  <span class="hljs-keyword">return</span> response.data;
+}
+</code></pre>
+<p>No more guessing the shape. No more hand-written interfaces. The types come directly from the backend definition.</p>
+<h3>5. Enforce sync in CI</h3>
+<p>Add an integration test that:</p>
+<ul>
+<li>Reads the committed <code>openapi.json</code></li>
+<li>Requests the live <code>/swagger/v1/swagger.json</code> from the running API</li>
+<li>Fails if they differ</li>
+</ul>
+<p>This makes it <strong>impossible to forget</strong> updating the schema. If someone changes a backend model and doesn't regenerate the schema, CI catches it before merge.</p>
+<hr>
+<h2>What About Separate Repos?</h2>
+<p>You don't need frontend and backend in the same repo for this to work. The key is that:</p>
+<ol>
+<li><strong>Backend publishes the schema</strong> — either as a committed file, a CI artifact, or via a URL</li>
+<li><strong>Frontend consumes it</strong> — by downloading and regenerating types</li>
+</ol>
+<p>Common publishing approaches in separate-repo setups:</p>
+<table><thead><tr><th>Approach</th><th>Description</th></tr></thead><tbody><tr><td>CI artifact</td><td>Backend CI generates and uploads <code>openapi.json</code> as a build artifact</td></tr><tr><td>Object storage</td><td>Published to S3/blob storage after each backend build</td></tr><tr><td>Shared contract repo</td><td>A dedicated repo that only holds the schema file</td></tr><tr><td>Direct URL</td><td>Frontend CI downloads from the running backend's <code>/swagger/v1/swagger.json</code></td></tr></tbody></table>
+<p>The workflow stays the same. Only the distribution step changes.</p>
+<hr>
+<h2>Naming Matters More Than You Think</h2>
+<p>Part of what this workflow makes visible: <strong>field naming is a public API decision</strong>.</p>
+<p>Renaming <code>personalNumber</code> to <code>personalPhone</code> isn't just a code style change — it changes the contract. With schema-driven types, that rename shows up in:</p>
+<ul>
+<li>The OpenAPI schema diff</li>
+<li>The generated TypeScript types</li>
+<li>Any frontend code using the old name (now a compile error)</li>
+</ul>
+<p>This is a feature. It makes contract changes explicit and reviewable.</p>
+<h3>Decoupling internal names from external contract</h3>
+<p>Sometimes you want to refactor internal class or field names without breaking the external API. In C# with Swashbuckle, you can use the <code>[JsonPropertyName]</code> attribute or configure Swagger to use a different name:</p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">using</span> System.Text.Json.Serialization;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ContactInfoView</span>
+{
+    [<span class="hljs-meta">JsonPropertyName(<span class="hljs-meta-string">&quot;workPhone&quot;</span>)</span>]
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>? WorkPhoneInternal { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+}
+</code></pre>
+<p>This way the internal property name can change, but the API contract stays stable.</p>
+<hr>
+<h2>Complete C# Example</h2>
+<p>Here's a minimal end-to-end example showing the full setup.</p>
+<h3>Backend: ASP.NET Core with Swagger</h3>
+<p><strong><code>Program.cs</code></strong></p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">using</span> Microsoft.OpenApi.Models;
+
+<span class="hljs-keyword">var</span> builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =&gt;
+{
+    options.SwaggerDoc(<span class="hljs-string">&quot;v1&quot;</span>, <span class="hljs-keyword">new</span> OpenApiInfo
+    {
+        Title = <span class="hljs-string">&quot;Employee API&quot;</span>,
+        Version = <span class="hljs-string">&quot;v1&quot;</span>
+    });
+});
+
+<span class="hljs-keyword">var</span> app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapControllers();
+app.Run();
+</code></pre>
+<p><strong><code>ContactInfoView.cs</code></strong></p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ContactInfoView</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>? WorkPhone { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>? PersonalPhone { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>? WorkEmail { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span>? PersonalEmail { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+}
+</code></pre>
+<p><strong><code>EmployeesController.cs</code></strong></p>
+<pre><code class="hljs language-csharp"><span class="hljs-keyword">using</span> Microsoft.AspNetCore.Mvc;
+
+[<span class="hljs-meta">ApiController</span>]
+[<span class="hljs-meta">Route(<span class="hljs-meta-string">&quot;employees&quot;</span>)</span>]
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">EmployeesController</span> : <span class="hljs-title">ControllerBase</span>
+{
+    [<span class="hljs-meta">HttpGet(<span class="hljs-meta-string">&quot;{employeeId}/contact&quot;</span>)</span>]
+    <span class="hljs-keyword">public</span> ActionResult&amp;<span class="hljs-meta">#x3C;ContactInfoView&gt; GetContact(string employeeId)</span>
+    {
+        <span class="hljs-comment">// In real code, fetch from database</span>
+        <span class="hljs-keyword">return</span> Ok(<span class="hljs-keyword">new</span> ContactInfoView
+        {
+            WorkPhone = <span class="hljs-string">&quot;555-0100&quot;</span>,
+            PersonalPhone = <span class="hljs-string">&quot;555-0101&quot;</span>,
+            WorkEmail = <span class="hljs-string">&quot;john@work.com&quot;</span>,
+            PersonalEmail = <span class="hljs-string">&quot;john@example.com&quot;</span>
+        });
+    }
+}
+</code></pre>
+<p>After running the API, the schema is available at:</p>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">5000</span><span class="hljs-regexp">/swagger/</span>v1/swagger.json
+</code></pre>
+<h3>Fetch and commit the schema</h3>
+<pre><code class="hljs language-bash">curl http://localhost:5000/swagger/v1/swagger.json -o openapi.json
+</code></pre>
+<p>Check this file into your repo.</p>
+<h3>Generate TypeScript types</h3>
+<p><strong><code>package.json</code></strong></p>
+<pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;scripts&quot;</span>: {
+    <span class="hljs-attr">&quot;generate:api-types&quot;</span>: <span class="hljs-string">&quot;openapi-typescript ./openapi.json -o src/api/generated/schema.ts&quot;</span>
+  }
+}
+</code></pre>
+<pre><code class="hljs language-bash">npm run generate:api-types
+</code></pre>
+<h3>Use in frontend</h3>
+<pre><code class="hljs language-ts"><span class="hljs-comment">// src/api/contact.ts</span>
+<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;axios&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-keyword">type</span> { paths } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./generated/schema&quot;</span>;
+
+<span class="hljs-keyword">type</span> ContactInfo =
+  paths[<span class="hljs-string">&quot;/employees/{employeeId}/contact&quot;</span>][<span class="hljs-string">&quot;get&quot;</span>][<span class="hljs-string">&quot;responses&quot;</span>][<span class="hljs-number">200</span>][<span class="hljs-string">&quot;content&quot;</span>][<span class="hljs-string">&quot;application/json&quot;</span>];
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchContactInfo</span>(<span class="hljs-params">employeeId: <span class="hljs-built_in">string</span></span>): <span class="hljs-title">Promise</span>&amp;#<span class="hljs-title">x3C</span></span>;ContactInfo&gt; {
+  <span class="hljs-keyword">const</span> { data } = <span class="hljs-keyword">await</span> axios.get&amp;#x3C;ContactInfo&gt;(<span class="hljs-string">`/employees/<span class="hljs-subst">${employeeId}</span>/contact`</span>);
+  <span class="hljs-keyword">return</span> data;
+}
+</code></pre>
+<p>Now if you rename <code>WorkPhone</code> to <code>WorkNumber</code> in the C# model, regenerate the schema and types, TypeScript will immediately show errors everywhere <code>workPhone</code> is used in the frontend. No more silent runtime bugs.</p>
+<hr>
+<h2>Key Takeaways</h2>
+<ul>
+<li><strong>Backend is the source of truth.</strong> Frontend should never guess data shapes.</li>
+<li><strong>Generate types, don't write them.</strong> If a schema exists, use it.</li>
+<li><strong>CI can enforce architecture, not just business logic.</strong> Schema sync tests prevent drift automatically.</li>
+<li><strong>Naming is a contract decision.</strong> Explicit names reduce bugs and improve readability.</li>
+<li><strong>You don't need a separate schema service.</strong> Your existing backend API can expose the schema via Swagger.</li>
+</ul>
+<hr>
+<h2>Before vs. After</h2>
+<table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody><tr><td>Frontend hand-writes type interfaces</td><td>Types generated from schema</td></tr><tr><td>Backend and frontend drift silently</td><td>Schema sync test fails in CI</td></tr><tr><td>Rename = hope frontend stays in sync</td><td>Rename = compile error guides you</td></tr><tr><td>Duplicated type definitions</td><td>Single source of truth</td></tr><tr><td>Runtime surprises</td><td>Compile-time errors</td></tr></tbody></table>
+<p>The mental shift is:</p>
+<blockquote>
+<p>From "keeping frontend and backend in sync manually" to "letting the contract enforce consistency automatically."</p>
+</blockquote>
+5:["$","article",null,{"className":"container mx-auto px-4 py-16","children":["$","div",null,{"className":"max-w-3xl mx-auto","children":[["$","$L10",null,{"href":"/blog","className":"text-blue-600 hover:text-blue-700 mb-8 inline-block","children":"← Back to Blog"}],["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"From Backend to Frontend: Type-Safe APIs with Schema-Driven Workflow"}],["$","div",null,{"className":"text-gray-500 dark:text-gray-400 mb-4","children":"March 30, 2026"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","api",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"api"}],["$","span","openapi",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"openapi"}],["$","span","typescript",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"typescript"}],["$","span","csharp",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"csharp"}],["$","span","backend",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"backend"}],["$","span","frontend",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"frontend"}]]}]]}],["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[["$","title","0",{"children":"From Backend to Frontend: Type-Safe APIs with Schema-Driven Workflow"}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"
