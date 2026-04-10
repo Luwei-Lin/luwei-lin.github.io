@@ -22,16 +22,21 @@ export default function AboutPage() {
         {/* Bio */}
         <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
           <p>
-            Fullstack software developer with 2+ years of production experience at Avanti HCM,
-            building enterprise HR software used by real organizations. Started as a co-op and
-            converted to full-time, proof of consistent delivery, not just internship checkboxes.
+            Full-stack software engineer with 2+ years of production experience building and 
+            shipping user-facing systems at scale. Currently at Avanti HCM, where I’ve owned 
+            features end-to-end, including leading the 0→1 development of a payroll module, 
+            designing backend systems, APIs, and data models for complex, correctness-critical workflows.
           </p>
           <p>
-            I work across the stack daily: TypeScript and React on the frontend, C# and .Net on
-            the backend, PostgreSQL for data. I also hold Cisco expert-level certifications and
-            interned at Arista Networks working on routing infrastructure in C++, which means I
-            understand the network layer that most web developers treat as a black box. That depth
-            makes me a better systems thinker when debugging distributed issues or designing APIs.
+            I work across the stack with TypeScript/React on the frontend and C#/.NET on the backend, 
+            backed by PostgreSQL. I focus on building reliable APIs and debugging distributed systems 
+            issues across services.
+          </p>
+          <p>
+            I also bring strong systems and networking fundamentals from my experience at Arista Networks,
+            where I worked on routing infrastructure in C++. This allows me to reason about performance 
+            and scalability beyond typical web development. I also hold Cisco expert-level certifications.
+            That depth makes me a better systems thinker when debugging distributed issues or designing APIs.
           </p>
           <p>
             I use Claude Code as part of my regular workflow: drafting pull request descriptions,
