@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luwei (Luis) Lin — Resume</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #76b900; --green-dim: #4a7500;
+    --black: #0a0a0a; --gray-600: #444; --gray-400: #888;
+    --font-main: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+  body {
+    font-family: var(--font-main); font-size: 9pt; line-height: 1.4;
+    color: var(--black); background: #fff;
+    max-width: 760px; margin: 0 auto; padding: 22px 36px;
+  }
+  .header {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    border-bottom: 1.5px solid var(--green); padding-bottom: 7px; margin-bottom: 7px;
+  }
+  .name { font-size: 19pt; font-weight: 600; letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
+  .contact {
+    font-family: var(--font-mono); font-size: 7.5pt;
+    color: var(--gray-600); text-align: center; line-height: 1.7;
+  }
+  .contact a { color: var(--green-dim); text-decoration: none; }
+  .summary {
+    border-left: 3px solid var(--green); padding: 4px 10px;
+    font-size: 8.5pt; line-height: 1.5; margin-bottom: 9px; color: #222;
+  }
+  .section { margin-bottom: 9px; }
+  .section-title {
+    font-family: var(--font-mono); font-size: 6.8pt; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dim);
+    border-bottom: 1px solid #e0e0e0; padding-bottom: 2px; margin-bottom: 6px;
+  }
+  .entry { margin-bottom: 7px; }
+  .entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .entry-title { font-weight: 600; font-size: 9pt; }
+  .entry-company { color: var(--green-dim); font-weight: 500; }
+  .entry-date { font-family: var(--font-mono); font-size: 7pt; color: var(--gray-400); white-space: nowrap; flex-shrink: 0; }
+  .entry-loc { font-size: 7.5pt; color: var(--gray-400); margin-bottom: 3px; }
+  ul.bullets { list-style: none; padding: 0; }
+  ul.bullets li { padding-left: 12px; position: relative; margin-bottom: 1.5px; font-size: 8.5pt; color: #222; }
+  ul.bullets li::before { content: '›'; position: absolute; left: 0; color: var(--green); font-weight: 600; }
+  .skills-grid { display: grid; grid-template-columns: 100px 1fr; gap: 2px 8px; font-size: 8.5pt; }
+  .skills-label { font-family: var(--font-mono); font-size: 7pt; color: var(--gray-400); padding-top: 1px; }
+  .certs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .cert-badge { font-family: var(--font-mono); font-size: 7pt; color: var(--green-dim); padding: 2px 7px; border: 1px solid var(--green-dim); }
+  .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .edu-title { font-weight: 600; font-size: 9pt; }
+  .edu-sub { font-size: 8pt; color: var(--gray-600); margin-top: 1px; }
+  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media print {
+    body { padding: 16px 28px; }
+    .cert-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="name">Luwei (Luis) Lin</div>
+  <div class="contact">
+    <a href="tel:4317779095">431-777-9095</a> &nbsp;·&nbsp; luwei2&#64;ualberta&#46;ca &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/luwei-lin-108639206/">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="https://luwei-lin.github.io">luwei-lin.github.io</a>
+    &nbsp;·&nbsp; Edmonton, AB, Canada
+  </div>
+</div>
+
+<div class="summary">
+  Full-stack software engineer with 2+ years shipping production features across SaaS platforms. Built ML pipelines (SVC, NER, TF-IDF) in Python and full-stack systems in React/TypeScript/C#, backed by PostgreSQL and MongoDB. Experienced with cloud infrastructure on AWS using Docker and CI/CD. Holds CCIE #65030 with deep TCP/IP and distributed systems fundamentals.
+</div>
+
+<div class="section">
+  <div class="section-title">Certifications</div>
+  <div class="certs">
+    <span class="cert-badge">CCIE Routing &amp; Switching #65030</span>
+    <span class="cert-badge">CCNP-RS</span>
+    <span class="cert-badge">CCNA-RS</span>
+    <span class="cert-badge">Google Data Analytics</span>
+    <span class="cert-badge">Dean's Honor Roll</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Professional Experience</div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div><span class="entry-title">Software Engineer, Intern</span><span style="color:#bbb"> — </span><span class="entry-company">Arista Networks, Routing Team</span></div>
+      <div class="entry-date">Sept 2023 – Dec 2023</div>
+    </div>
+    <div class="entry-loc">Vancouver, BC &nbsp;·&nbsp; Linux, C++, Python3, EOS, YAML</div>
+    <ul class="bullets">
+      <li>Reduced route convergence time by redesigning DFS/BFS graph traversal algorithms in C++; diagnosed and resolved critical routing protocol bugs across large-scale fleet deployments.</li>
+      <li>Designed automated test frameworks in Python3 and YAML-based infrastructure-as-code for cloud deployment provisioning, integrated into CI/CD pipelines.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div><span class="entry-title">Full-Stack Software Engineer</span><span style="color:#bbb"> — </span><span class="entry-company">Avanti Software</span></div>
+      <div class="entry-date">May 2024 – Present</div>
+    </div>
+    <div class="entry-loc">Remote, Edmonton AB &nbsp;·&nbsp; React, TypeScript, C#, ASP.NET, MySQL, Redis, Docker, AWS</div>
+    <ul class="bullets">
+      <li>Designed and built full-stack payroll module for a mission-critical SaaS platform serving 300+ Canadian enterprises, using React frontend and C# backend with RESTful API endpoints.</li>
+      <li>Designed distributed batch processing system handling large-scale concurrent operations with fault-tolerant, event-driven architecture ensuring idempotency and reliable execution.</li>
+      <li>Managed end-to-end cloud infrastructure deployment on AWS using Docker containers, overseeing CI/CD pipelines and production rollouts for enterprise-grade platform.</li>
+      <li>Developed MySQL database interactions with optimized caching strategies to balance performance and real-time data accuracy under high-concurrency conditions.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div><span class="entry-title">Backend ML Developer, Contract</span><span style="color:#bbb"> — </span><span class="entry-company">ShopHopper</span></div>
+      <div class="entry-date">Sep 2022 – Apr 2023</div>
+    </div>
+    <div class="entry-loc">Kelowna, BC &nbsp;·&nbsp; Python3, PostgreSQL, scikit-learn</div>
+    <ul class="bullets">
+      <li>Built ML pipeline using Linear SVC to classify and decode product strings for cross-catalog matching; trained text classifier improving gender inference accuracy 30%→70% in production database.</li>
+      <li>Implemented recommendation engine matching user preferences to products, directly improving purchase conversion rate.</li>
+    </ul>
+  </div>
+
+  <div class="entry">
+    <div class="entry-header">
+      <div><span class="entry-title">Data Analyst, Intern</span><span style="color:#bbb"> — </span><span class="entry-company">Mitacs</span></div>
+      <div class="entry-date">May 2022 – Aug 2022</div>
+    </div>
+    <div class="entry-loc">Edmonton, AB &nbsp;·&nbsp; Python3, NLP, spaCy, Jupyter</div>
+    <ul class="bullets">
+      <li>Trained NER model achieving 94.59% F1-score using Python/spaCy to extract structured product attributes (size, color, pattern) from raw text at scale.</li>
+      <li>Built text normalization pipeline processing 30K+ records with 84% accuracy using TF-IDF and N-grams phrase matching to sanitize and standardize product types.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Education</div>
+  <div class="entry">
+    <div class="edu-header">
+      <div class="edu-title">University of Alberta — B.Sc. Computing Science &amp; Statistics</div>
+      <div class="entry-date">Sept 2021 – Apr 2026 (Expected)</div>
+    </div>
+    <div class="edu-sub">Edmonton, AB, Canada</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Relevant Projects</div>
+  <div class="proj-grid">
+    <div class="entry">
+      <div class="entry-header">
+        <a href="https://github.com/Luwei-Lin/online_video_call_and_chatroom" style="font-weight:600;color:var(--black);text-decoration:none;" onmouseover="this.style.color='var(--green-dim)'" onmouseout="this.style.color='var(--black)'">Real-Time Video Call &amp; Chat App</a>
+        <span class="entry-date">2021</span>
+      </div>
+      <ul class="bullets">
+        <li>Full-stack real-time communication app using WebRTC, ICE/TURN/STUN protocols, Node.js — demonstrates low-level network protocol implementation.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-header">
+        <a href="https://github.com/Luwei-Lin/Manitoba_wildfire_project" style="font-weight:600;color:var(--black);text-decoration:none;" onmouseover="this.style.color='var(--green-dim)'" onmouseout="this.style.color='var(--black)'">Wildfire Prediction — Borealis AI</a>
+        <span class="entry-date">Oct–Nov 2021</span>
+      </div>
+      <ul class="bullets">
+        <li>Processed 2M weather records; implemented LSTM and regression models; built web crawler generating 1M-record training dataset.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skills-label">Languages</div>
+    <div class="skills-value">Python3, TypeScript, C#, JavaScript, C++, C, Java, R</div>
+    <div class="skills-label">Frameworks</div>
+    <div class="skills-value">React, Next.js, ASP.NET, Node.js, Flask, WebRTC, Socket.io</div>
+    <div class="skills-label">AI / ML</div>
+    <div class="skills-value">scikit-learn, spaCy, LSTM, TF-IDF, NER, SVC, Pandas, NumPy</div>
+    <div class="skills-label">Databases</div>
+    <div class="skills-value">PostgreSQL, MongoDB, MySQL, SQLite3, Redis</div>
+    <div class="skills-label">Infrastructure</div>
+    <div class="skills-value">AWS, Docker, Linux/Unix, Git, Jenkins, CI/CD, YAML</div>
+  </div>
+</div>
+
+</body>
+</html>

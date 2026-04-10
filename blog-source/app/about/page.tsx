@@ -1,3 +1,5 @@
+import ResumePreviewButton from '@/components/ResumePreviewButton';
+
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-16">
@@ -10,14 +12,7 @@ export default function AboutPage() {
         </p>
 
         {/* Download Button */}
-        <a
-          href="/Luwei-Lin-Resume-2026.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg mb-10 transition-colors"
-        >
-          View Resume (PDF)
-        </a>
+        <ResumePreviewButton />
 
         {/* Bio */}
         <div className="prose prose-lg dark:prose-invert max-w-none mb-12">
