@@ -25,8 +25,7 @@ export default function ResumePreviewButton() {
           onClick={() => setOpen(false)}
         >
           <div
-            className="relative bg-white rounded-lg shadow-2xl flex flex-col"
-            style={{ width: '820px', height: '90vh', maxWidth: '95vw' }}
+            className="relative bg-white flex flex-col w-screen h-screen"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
@@ -52,7 +51,7 @@ export default function ResumePreviewButton() {
             {/* iframe */}
             <iframe
               ref={iframeRef}
-              src="/Luwei_Lin_Resume.html"
+              src="/Luwei-Lin-Resume-Full-Stack-2026.pdf"
               className="flex-1 w-full rounded-b-lg"
               title="Resume Preview"
             />
