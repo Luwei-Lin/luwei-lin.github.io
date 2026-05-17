@@ -1,0 +1,205 @@
+1:"$Sreact.fragment"
+2:I[1431,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-eea9e6ffe2f9e83e.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/media/36966cca54120369-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/css/916697628ed6de86.css","style"]
+0:{"P":null,"b":"FbqI133kbF8U-bqnCYa-H","p":"","c":["","blog","how-to-build-AI-harness",""],"i":false,"f":[[["",{"children":["blog",{"children":[["slug","how-to-build-AI-harness","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/916697628ed6de86.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function(){var s=localStorage.getItem('theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(s===null&&d)){document.documentElement.classList.add('dark')}})()"}}]}],["$","body",null,{"className":"__className_dd5b2f","children":[["$","$L2",null,{}],["$","main",null,{"className":"min-h-screen","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"bg-gray-100 dark:bg-gray-900 py-8 mt-16","children":["$","div",null,{"className":"container mx-auto px-4 text-center text-gray-600 dark:text-gray-400","children":["$","p",null,{"children":["© ",2026," Luwei (Luis) Lin. All rights reserved."]}]}]}]]}]]}]]}],{"children":["blog",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","how-to-build-AI-harness","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],["$","meta",null,{"name":"next-size-adjust","content":""}]],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","953","static/chunks/app/blog/%5Bslug%5D/page-e9c505b4690333f0.js"],""]
+11:T3384,<h1>How to Build an AI Harness</h1>
+<p>AI coding agents are getting better fast, but the pattern I keep seeing is this: the model is rarely the whole product. The useful part is the system around it.</p>
+<p>That surrounding system is what people are starting to call an <strong>AI harness</strong>. It is the layer that decides what context the agent sees, what tools it can use, what rules it must follow, how work gets verified, and when a human needs to step in.</p>
+<p>If a prompt is a request, a harness is the working environment around the request.</p>
+<hr>
+<h2>What an AI Harness Is</h2>
+<p>For software work, I think of an AI harness as a runtime wrapper around an agent:</p>
+<pre><code class="hljs">User intent
+  -&gt; task shaping
+  -&gt; scoped context
+  -&gt; skills and workflows
+  -&gt; tool permissions
+  -&gt; <span class="hljs-keyword">code</span> edits
+  -&gt; tests and evals
+  -&gt; review evidence
+  -&gt; deployment guardrails
+</code></pre>
+<p>The point is not to make the agent sound smarter. The point is to make its work more inspectable, repeatable, and safe to accept.</p>
+<p>Without a harness, the agent is usually just guessing inside a large codebase. With a harness, the agent has a map, a checklist, a narrow tool belt, and a clear definition of done.</p>
+<hr>
+<h2>Why This Is Becoming a Trend</h2>
+<p>The web conversation has shifted from "which model writes the best code?" to "what system makes AI-generated work reliable?"</p>
+<p>Harness, the DevOps company, published a 2026 report arguing that AI is accelerating code production while many teams have not modernized the testing, security, and deployment systems that happen after code is written. Their study frames the problem well: code moves faster, but downstream review, rework, and deployment risk increase when delivery systems do not keep up.</p>
+<p>Recent research is pointing in the same direction. A May 2026 arXiv paper, <em>AI Harness Engineering: A Runtime Substrate for Foundation-Model Software Agents</em>, describes software-engineering capability as something that emerges from a model, a harness, and an environment together. Another April 2026 paper, <em>Agentic Harness Engineering</em>, focuses on making harness changes observable and measurable instead of relying on manual prompt tinkering.</p>
+<p>In practice, this means the next useful layer is not only "better prompts." It is:</p>
+<ul>
+<li>scoped repository instructions</li>
+<li>reusable agent skills</li>
+<li>task templates</li>
+<li>permission boundaries</li>
+<li>trace logs</li>
+<li>evals</li>
+<li>deterministic tests</li>
+<li>human review checkpoints</li>
+</ul>
+<p>That matches what many teams are discovering the hard way: AI can produce code quickly, but engineering is still the discipline of proving that the change is correct.</p>
+<hr>
+<h2>The Core Pieces</h2>
+<h3>1. Task Shaping</h3>
+<p>Start before the agent writes code. A good harness turns a vague request into a small, testable task.</p>
+<p>For example:</p>
+<pre><code class="hljs language-markdown">Goal:
+<span class="hljs-bullet">-</span> Add loading and error states to the employee profile page.
+
+Scope:
+<span class="hljs-bullet">-</span> Only edit files under <span class="hljs-code">`src/apps/employees/`</span>.
+<span class="hljs-bullet">-</span> Do not change shared components unless the existing API cannot support the state.
+
+Definition of done:
+<span class="hljs-bullet">-</span> Existing tests pass.
+<span class="hljs-bullet">-</span> Add or update component tests for loading, success, and error states.
+<span class="hljs-bullet">-</span> Summarize changed files and remaining risks.
+</code></pre>
+<p>This is where I like Matt Pocock's skills approach. His public <code>mattpocock/skills</code> repo is built around small, composable agent procedures instead of one giant process. Skills like planning, TDD, review, issue triage, and refactor planning are useful because they turn recurring engineering moves into explicit workflows.</p>
+<p>The pattern is simple: if you keep pasting the same instruction into an agent, it probably belongs in a skill.</p>
+<h3>2. Context Scoping</h3>
+<p>Most agent mistakes are context mistakes. The agent imports the wrong convention, changes the wrong layer, or treats one app's pattern as global truth.</p>
+<p>A harness should give the agent less context, but better context:</p>
+<pre><code class="hljs language-markdown">/AGENTS.md
+app/react-app/AGENTS.md
+app/react-app/docs/testing/component-tests.md
+app/node-server/AGENTS.md
+</code></pre>
+<p>The root file should act like a router. It should tell the agent where to look, not dump every rule into one massive document. Directory-level files should explain the local architecture, test pattern, banned anti-patterns, and review expectations.</p>
+<p>This is the same idea as good onboarding docs, except the reader is now partly automated.</p>
+<h3>3. Skills and Workflows</h3>
+<p>Skills are reusable procedures the agent can load when relevant. Claude Code's docs describe skills as <code>SKILL.md</code> files with frontmatter and instructions; the key advantage is that the skill body loads only when needed instead of living permanently in global context.</p>
+<p>A useful project skill might be:</p>
+<pre><code class="hljs language-markdown">---
+name: write-component-test
+<span class="hljs-section">description: Use when adding or updating React component tests in this repo.
+---</span>
+
+Follow the canonical MockBff pattern:
+<span class="hljs-bullet">-</span> Mock at the BFF axios edge.
+<span class="hljs-bullet">-</span> Use <span class="hljs-code">`mockBff.default`</span> only for data every test needs.
+<span class="hljs-bullet">-</span> Use <span class="hljs-code">`mockBff.testOverride`</span> for scenario-specific responses.
+<span class="hljs-bullet">-</span> Structure tests with Arrange, Act, Assert spacing.
+<span class="hljs-bullet">-</span> Do not mock service hooks when the BFF mock can represent the behavior.
+</code></pre>
+<p>This is where BMad Method is interesting too. BMad is a more structured AI-driven agile framework: it brings specialized agents, workflows, planning depth, and lifecycle guidance. I would not use it for every small bug fix, but the pattern is valuable for larger product work where you want the agent to help with product brief, architecture, implementation plan, and testing strategy as separate steps.</p>
+<p>My rule of thumb:</p>
+<table><thead><tr><th>Situation</th><th>Better fit</th></tr></thead><tbody><tr><td>Small implementation task</td><td>Matt Pocock-style focused skill</td></tr><tr><td>Existing repo convention</td><td>Project <code>AGENTS.md</code> + local skill</td></tr><tr><td>New feature with unclear scope</td><td>BMad-style staged workflow</td></tr><tr><td>Risky refactor</td><td>Skill + explicit review checklist + eval</td></tr></tbody></table>
+<h3>4. Tool Permissions</h3>
+<p>The harness should decide what the agent can do without asking.</p>
+<p>Good defaults:</p>
+<ul>
+<li>Read files freely inside the repo</li>
+<li>Edit only the scoped area for the task</li>
+<li>Run tests and linters</li>
+<li>Ask before installing packages</li>
+<li>Ask before changing lockfiles</li>
+<li>Ask before touching migrations, secrets, CI, deploy config, or destructive git commands</li>
+</ul>
+<p>This is not about distrusting the agent. It is about making dangerous actions visible at the right moment.</p>
+<h3>5. Verification</h3>
+<p>The most important part of the harness is the definition of done.</p>
+<p>For code tasks, that usually means:</p>
+<ul>
+<li>unit tests for pure logic</li>
+<li>component tests for UI behavior</li>
+<li>integration tests for API boundaries</li>
+<li>typecheck for contracts</li>
+<li>lint for local style</li>
+<li>build for packaging errors</li>
+<li>manual notes for anything not covered</li>
+</ul>
+<p>OpenAI's Evals repo is useful here as a mental model even when you are not evaluating model answers directly. It treats evaluation as a first-class engineering artifact. For an AI harness, you can do the same thing with coding tasks: build a small suite of repeated tasks and check whether agent changes still pass the expectations that matter to your team.</p>
+<h3>6. Review Evidence</h3>
+<p>A good agent final answer should not just say "done." It should leave evidence:</p>
+<pre><code class="hljs language-markdown">Changed:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`EmployeeProfile.tsx`</span>: added loading and error rendering
+<span class="hljs-bullet">-</span> <span class="hljs-code">`EmployeeProfile.test.tsx`</span>: added loading, success, and error coverage
+
+Verified:
+<span class="hljs-bullet">-</span> <span class="hljs-code">`npm test -- EmployeeProfile.test.tsx`</span>
+<span class="hljs-bullet">-</span> <span class="hljs-code">`npm run typecheck`</span>
+
+Risks:
+<span class="hljs-bullet">-</span> Did not run full e2e suite
+<span class="hljs-bullet">-</span> Error copy may need product review
+</code></pre>
+<p>This helps the human reviewer move faster without giving up judgment.</p>
+<hr>
+<h2>A Minimal Harness You Can Build This Week</h2>
+<p>If I were adding this to a real repo, I would start small:</p>
+<ol>
+<li>Add a root <code>AGENTS.md</code> that maps the repo.</li>
+<li>Add directory-level <code>AGENTS.md</code> files for frontend, backend, and tests.</li>
+<li>Create two or three project skills for common tasks.</li>
+<li>Write a "definition of done" checklist for AI-generated PRs.</li>
+<li>Add a review template that asks for changed files, commands run, and risks.</li>
+<li>Build a tiny eval set: five real bugs or tasks that good agents should handle correctly.</li>
+</ol>
+<p>Do not start by designing a giant framework. Start by capturing the review comments you already repeat.</p>
+<hr>
+<h2>Example Repo Harness</h2>
+<pre><code class="hljs language-text">repo/
+|-- AGENTS.md
+|-- .claude/
+|   `-- skills/
+|       |-- write-component-test/
+|       |   `-- SKILL.md
+|       |-- plan-refactor/
+|       |   `-- SKILL.md
+|       `-- review-ai-change/
+|           `-- SKILL.md
+|-- app/
+|   |-- react-app/
+|   |   |-- AGENTS.md
+|   |   `-- docs/
+|   |       |-- testing.md
+|   |       `-- ui-guardrails.md
+|   `-- node-server/
+|       |-- AGENTS.md
+|       `-- docs/
+|           `-- api-contracts.md
+`-- evals/
+    |-- tasks/
+    `-- expected-behavior.md
+</code></pre>
+<p>The important thing is the shape: routing, local rules, reusable skills, and verification.</p>
+<hr>
+<h2>Anti-Patterns</h2>
+<table><thead><tr><th>Anti-pattern</th><th>Why it fails</th></tr></thead><tbody><tr><td>One huge prompt</td><td>It becomes stale, expensive, and hard to debug</td></tr><tr><td>No scoped context</td><td>The agent applies the wrong convention to the wrong folder</td></tr><tr><td>No verification command</td><td>The change sounds plausible but is not proven</td></tr><tr><td>Skills without examples</td><td>The agent follows the words but misses the local pattern</td></tr><tr><td>Letting the agent own deployment silently</td><td>Production changes need human-visible gates</td></tr><tr><td>Treating evals as optional</td><td>You cannot improve what you cannot measure</td></tr></tbody></table>
+<hr>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMad Method</a> - an open-source AI-driven agile development framework with structured workflows, specialized agents, and lifecycle guidance.</li>
+<li><a href="https://github.com/mattpocock/skills">Matt Pocock's Skills</a> - a practical collection of small, composable skills for real engineering workflows.</li>
+<li><a href="https://code.claude.com/docs/en/skills">Claude Code Skills docs</a> - useful reference for how <code>SKILL.md</code> files work and where skills live.</li>
+<li><a href="https://github.com/openai/evals">OpenAI Evals</a> - a framework and registry for evaluating LLMs and LLM systems.</li>
+<li><a href="https://www.prnewswire.com/news-releases/harness-report-reveals-ai-coding-accelerates-development-devops-maturity-in-2026-isnt-keeping-pace-302710937.html">Harness 2026 State of DevOps Modernization report announcement</a> - a useful industry framing of AI code speed versus delivery risk.</li>
+<li><a href="https://arxiv.org/abs/2605.13357">AI Harness Engineering: A Runtime Substrate for Foundation-Model Software Agents</a> - a recent research framing of harnesses as the runtime substrate around software agents.</li>
+<li><a href="https://arxiv.org/abs/2604.25850">Agentic Harness Engineering</a> - research on observability-driven harness evolution.</li>
+</ul>
+<hr>
+<h2>Takeaways</h2>
+<ul>
+<li>The current trend is moving from prompt engineering to harness engineering.</li>
+<li>A useful harness makes agent work scoped, observable, testable, and reviewable.</li>
+<li><code>AGENTS.md</code> files are a lightweight way to route context in a repo.</li>
+<li>Skills are a good place to store repeated engineering procedures.</li>
+<li>BMad-style workflows help when the work needs staged planning; Matt Pocock-style skills help when the work needs sharp local execution.</li>
+<li>The final test is not whether the agent produced code. It is whether the system produced evidence that the change is correct.</li>
+</ul>
+5:["$","article",null,{"className":"container mx-auto px-4 py-16","children":["$","div",null,{"className":"max-w-3xl mx-auto","children":[["$","$L10",null,{"href":"/blog","className":"text-blue-600 hover:text-blue-700 mb-8 inline-block","children":"← Back to Blog"}],["$","header",null,{"className":"mb-8","children":[["$","h1",null,{"className":"text-4xl font-bold mb-4","children":"How to Build an AI Harness"}],["$","div",null,{"className":"text-gray-500 dark:text-gray-400 mb-4","children":"May 16, 2026"}],["$","div",null,{"className":"flex gap-2","children":[["$","span","ai-agents",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"ai-agents"}],["$","span","engineering",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"engineering"}],["$","span","guardrails",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"guardrails"}],["$","span","developer-tools",{"className":"text-sm bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded","children":"developer-tools"}]]}]]}],["$","div",null,{"className":"prose prose-lg dark:prose-invert max-w-none","dangerouslySetInnerHTML":{"__html":"$11"}}]]}]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+9:{"metadata":[["$","title","0",{"children":"How to Build an AI Harness"}],["$","meta","1",{"name":"description","content":"A practical way to wrap AI coding agents with context, skills, guardrails, evals, and delivery checks so they can help without quietly making the system harder to maintain."}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"

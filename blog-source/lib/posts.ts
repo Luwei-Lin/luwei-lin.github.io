@@ -51,6 +51,11 @@ export interface PostData {
   content?: string;
 }
 
+function getPostTime(post: PostData): number {
+  const time = new Date(post.date).getTime();
+  return Number.isNaN(time) ? 0 : time;
+}
+
 export function getSortedPostsData(): PostData[] {
   const allPostsData = getAllMarkdownFiles(postsDirectory)
     .map((fullPath) => {
@@ -70,14 +75,9 @@ export function getSortedPostsData(): PostData[] {
       };
     });
 
-  // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  // Sort newest first. Some frontmatter dates are parsed as strings and some
+  // as Date objects, so normalize before comparing.
+  return allPostsData.sort((a, b) => getPostTime(b) - getPostTime(a));
 }
 
 export function getAllPostSlugs() {
