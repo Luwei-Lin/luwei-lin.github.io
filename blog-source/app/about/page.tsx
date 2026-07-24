@@ -11,25 +11,6 @@ export default function AboutPage() {
           Software Developer · Avanti HCM
         </p>
 
-        <div className="flex flex-wrap gap-3 mb-8">
-          <a
-            href="/Luwei-Lin-Resume-2027.pdf?v=20260724"
-            className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open Resume PDF
-          </a>
-          <a
-            href="/Luwei_Lin_Resume.html"
-            className="inline-flex items-center rounded-lg border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 transition-colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Resume HTML
-          </a>
-        </div>
-
         {/* Download Button */}
         <ResumePreviewButton />
 
