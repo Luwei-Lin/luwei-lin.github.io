@@ -11,6 +11,25 @@ export default function AboutPage() {
           Software Developer · Avanti HCM
         </p>
 
+        <div className="flex flex-wrap gap-3 mb-8">
+          <a
+            href="/Luwei-Lin-Resume-2027.pdf?v=20260724"
+            className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open Resume PDF
+          </a>
+          <a
+            href="/Luwei_Lin_Resume.html"
+            className="inline-flex items-center rounded-lg border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Resume HTML
+          </a>
+        </div>
+
         {/* Download Button */}
         <ResumePreviewButton />
 
@@ -23,15 +42,16 @@ export default function AboutPage() {
             designing backend systems, APIs, and data models for complex, correctness-critical workflows.
           </p>
           <p>
-            I work across the stack with TypeScript/React on the frontend and C#/.NET on the backend, 
-            backed by PostgreSQL. I focus on building reliable APIs and debugging distributed systems 
-            issues across services.
+            I work across the stack with Java, React, and TypeScript, backed by PostgreSQL, Redis,
+            AWS, and Docker. I focus on building reliable APIs, distributed batch systems, and
+            performance-sensitive services.
           </p>
           <p>
             I also bring strong systems and networking fundamentals from my experience at Arista Networks,
-            where I worked on routing infrastructure in C++. This allows me to reason about performance 
-            and scalability beyond typical web development. I also hold Cisco expert-level certifications.
-            That depth makes me a better systems thinker when debugging distributed issues or designing APIs.
+            where I worked on routing infrastructure in C++. That background helps me reason about
+            performance and scalability beyond typical web development. I also hold Cisco expert-level
+            certifications, which makes me a stronger systems thinker when debugging distributed issues
+            or designing APIs.
           </p>
           <p>
             I use Claude Code as part of my regular workflow: drafting pull request descriptions,
@@ -53,7 +73,7 @@ export default function AboutPage() {
               Co-op → Full-time
             </p>
             <div className="flex flex-wrap gap-1">
-              {['TypeScript', 'React', 'Redux', 'C#', '.Net', 'PostgreSQL'].map((tag) => (
+              {['Java', 'React', 'TypeScript', 'PostgreSQL', 'Redis', 'AWS', 'Docker'].map((tag) => (
                 <span
                   key={tag}
                   className="text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-0.5 rounded"
@@ -74,7 +94,7 @@ export default function AboutPage() {
               <li>Agentic coding workflows &amp; skills</li>
             </ul>
             <div className="flex flex-wrap gap-1">
-              {['Claude Code', 'TypeScript', 'React', 'C#', 'Git', 'Docker'].map((tag) => (
+              {['Claude Code', 'Java', 'TypeScript', 'React', 'PostgreSQL', 'Git', 'Docker'].map((tag) => (
                 <span
                   key={tag}
                   className="text-xs bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-2 py-0.5 rounded"
@@ -93,6 +113,10 @@ export default function AboutPage() {
                 <span className="font-medium">University of Alberta</span><br />
                 B.Sc. Computing Science &amp; Statistics<br />
                 Dean&apos;s Honor Roll
+              </li>
+              <li>
+                <span className="font-medium">University of Illinois Urbana-Champaign</span><br />
+                MCS, expected Dec 2027
               </li>
               <li>
                 <span className="font-medium">Cisco Certified:</span> CCIE · CCNP · CCNA
