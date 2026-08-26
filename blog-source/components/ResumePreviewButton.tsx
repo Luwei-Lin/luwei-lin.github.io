@@ -51,7 +51,7 @@ export default function ResumePreviewButton() {
             {/* iframe */}
             <iframe
               ref={iframeRef}
-              src="/Luwei-Lin-Resume-2027.pdf?v=20260724"
+              src="/Luwei_Lin_Resume.html"
               className="flex-1 w-full rounded-b-lg"
               title="Resume Preview"
             />
