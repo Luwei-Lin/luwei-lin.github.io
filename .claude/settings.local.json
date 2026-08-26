@@ -11,7 +11,10 @@
       "Bash(docker-compose build:*)",
       "Bash(bash scripts/deploy.sh)",
       "Bash(sed -i '' 's/\\\\r//' /Users/luis/Documents/GitHub/luwei.github.io/blog-source/scripts/deploy.sh)",
-      "Bash(bash /Users/luis/Documents/GitHub/luwei.github.io/blog-source/scripts/deploy.sh)"
+      "Bash(bash /Users/luis/Documents/GitHub/luwei.github.io/blog-source/scripts/deploy.sh)",
+      "Bash(docker context *)",
+      "Bash(docker info *)",
+      "Bash(make deploy *)"
     ]
   }
 }
