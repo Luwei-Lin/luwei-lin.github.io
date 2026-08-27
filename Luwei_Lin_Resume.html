@@ -8,7 +8,7 @@
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --green: #76b900; --green-dim: #4a7500;
+    --accent: #2563eb; --accent-dim: #1d4ed8;
     --black: #0a0a0a; --gray-600: #444; --gray-400: #888;
     --font-main: 'IBM Plex Sans', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
@@ -20,37 +20,37 @@
   }
   .header {
     display: flex; flex-direction: column; align-items: center; text-align: center;
-    border-bottom: 1.5px solid var(--green); padding-bottom: 7px; margin-bottom: 7px;
+    border-bottom: 1.5px solid var(--accent); padding-bottom: 7px; margin-bottom: 7px;
   }
   .name { font-size: 19pt; font-weight: 600; letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
   .contact {
     font-family: var(--font-mono); font-size: 7.5pt;
     color: var(--gray-600); text-align: center; line-height: 1.7;
   }
-  .contact a { color: var(--green-dim); text-decoration: none; }
+  .contact a { color: var(--accent-dim); text-decoration: none; }
   .summary {
-    border-left: 3px solid var(--green); padding: 4px 10px;
+    border-left: 3px solid var(--accent); padding: 4px 10px;
     font-size: 8.5pt; line-height: 1.5; margin-bottom: 9px; color: #222;
   }
   .section { margin-bottom: 9px; }
   .section-title {
     font-family: var(--font-mono); font-size: 6.8pt; font-weight: 500;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--green-dim);
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-dim);
     border-bottom: 1px solid #e0e0e0; padding-bottom: 2px; margin-bottom: 6px;
   }
   .entry { margin-bottom: 7px; }
   .entry-header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
   .entry-title { font-weight: 600; font-size: 9pt; }
-  .entry-company { color: var(--green-dim); font-weight: 500; }
+  .entry-company { color: var(--accent-dim); font-weight: 500; }
   .entry-date { font-family: var(--font-mono); font-size: 7pt; color: var(--gray-400); white-space: nowrap; flex-shrink: 0; }
   .entry-loc { font-size: 7.5pt; color: var(--gray-400); margin-bottom: 3px; }
   ul.bullets { list-style: none; padding: 0; }
   ul.bullets li { padding-left: 12px; position: relative; margin-bottom: 1.5px; font-size: 8.5pt; color: #222; }
-  ul.bullets li::before { content: '›'; position: absolute; left: 0; color: var(--green); font-weight: 600; }
+  ul.bullets li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
   .skills-grid { display: grid; grid-template-columns: 100px 1fr; gap: 2px 8px; font-size: 8.5pt; }
   .skills-label { font-family: var(--font-mono); font-size: 7pt; color: var(--gray-400); padding-top: 1px; }
   .certs { display: flex; gap: 8px; flex-wrap: wrap; }
-  .cert-badge { font-family: var(--font-mono); font-size: 7pt; color: var(--green-dim); padding: 2px 7px; border: 1px solid var(--green-dim); }
+  .cert-badge { font-family: var(--font-mono); font-size: 7pt; color: var(--accent-dim); padding: 2px 7px; border: 1px solid var(--accent-dim); }
   .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
   .edu-title { font-weight: 600; font-size: 9pt; }
   .edu-sub { font-size: 8pt; color: var(--gray-600); margin-top: 1px; }
@@ -166,7 +166,7 @@
   <div class="proj-grid">
     <div class="entry">
       <div class="entry-header">
-        <a href="https://github.com/Luwei-Lin/online_video_call_and_chatroom" style="font-weight:600;color:var(--black);text-decoration:none;" onmouseover="this.style.color='var(--green-dim)'" onmouseout="this.style.color='var(--black)'">Real-Time Video Call &amp; Chat App</a>
+        <a href="https://github.com/Luwei-Lin/online_video_call_and_chatroom" style="font-weight:600;color:var(--black);text-decoration:none;" onmouseover="this.style.color='var(--accent-dim)'" onmouseout="this.style.color='var(--black)'">Real-Time Video Call &amp; Chat App</a>
         <span class="entry-date">2021</span>
       </div>
       <ul class="bullets">
@@ -175,7 +175,7 @@
     </div>
     <div class="entry">
       <div class="entry-header">
-        <a href="https://github.com/Luwei-Lin/Manitoba_wildfire_project" style="font-weight:600;color:var(--black);text-decoration:none;" onmouseover="this.style.color='var(--green-dim)'" onmouseout="this.style.color='var(--black)'">Wildfire Prediction — Borealis AI</a>
+        <a href="https://github.com/Luwei-Lin/Manitoba_wildfire_project" style="font-weight:600;color:var(--black);text-decoration:none;" onmouseover="this.style.color='var(--accent-dim)'" onmouseout="this.style.color='var(--black)'">Wildfire Prediction — Borealis AI</a>
         <span class="entry-date">Oct–Nov 2021</span>
       </div>
       <ul class="bullets">
